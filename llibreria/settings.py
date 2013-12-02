@@ -39,6 +39,8 @@ INSTALLED_APPS = (
     'llibres',
     'usuaris',
     'prestecs',
+    #autenticació social:
+    'social.apps.django_app.default',
 )
 
 MIDDLEWARE_CLASSES = (
