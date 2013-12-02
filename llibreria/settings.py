@@ -39,7 +39,7 @@ INSTALLED_APPS = (
     'llibres',
     'usuaris',
     'prestecs',
-    #autenticació social:
+    #autenticacio social:
     'social.apps.django_app.default',
 )
 
