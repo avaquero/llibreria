@@ -1,4 +1,5 @@
 from django.db import models
+from usuaris.models import Perfil
 
 class Genere(models.Model):
     nom = models.CharField(max_length=200, unique =  True, help_text = "Nom del genere")

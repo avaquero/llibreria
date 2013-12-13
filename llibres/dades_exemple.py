@@ -1,21 +1,25 @@
 # -*- coding: utf8 -*-
-from models.llibres import Genere
-from models.llibres import Titol
-from models.llibres import Llibre
+from llibres.models import Genere
+from llibres.models import Titol
+from llibres.models import Llibre
 from django.contrib.auth.models import User
 from usuaris.models import Perfil
 
 def crea():
-    pepe_usr = User.objects.create( XXXXX )
-    jose_usr = User.objects.create( XXXXX )
-    pepa_usr = User.objects.create( XXXXX )
+    pepe_usr = User.objects.create_user( 'pepe', 'pepe@bookshare.cat', 'pepe1' )
+    jose_usr = User.objects.create_user( 'jose', 'jose@bookshare.cat', 'jose1' )
+    pepa_usr = User.objects.create_user( 'pepa', 'pepa@bookshare.cat', 'pepa1' )
+    
+    pepe_usr.save()
+    jose_usr.save()
+    pepa_usr.save()
     
     pepe = Perfil()
     pepe.usuari = pepe_usr
     pepe.save()
     
     jose = Perfil()
-    jose.usuari = jose
+    jose.usuari = jose_usr
     jose.save()
     
     pepa = Perfil()
