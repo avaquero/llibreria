@@ -12,19 +12,26 @@ def crea():
     
     pepe = Perfil()
     pepe.usuari = pepe_usr
+    pepe.save()
     
+    jose = Perfil()
+    jose.usuari = jose
+    jose.save()
     
+    pepa = Perfil()
+    pepa.usuari = pepa_usr
+    pepa.save()
     
     fantasia = Genere()
     fantasia.nom = "Fantasia"
     fantasia.save()
 
     terror = Genere()
-    terror.nom = "terror"
+    terror.nom = "Terror"
     terror.save()
 
     romantico = Genere()
-    romantico.nom = "romantico"
+    romantico.nom = "Romantico"
     romantico.save()
 
     harrypotter = Titol()
@@ -41,6 +48,17 @@ def crea():
     harry1.titol = harrypotter
     harry1.propietari = pepe
     harry1.save()
+    
+    amor = Titol("Amor Amor", "Llibre d'amor", romantico)
+    amor.save()
+    
+    amor1 = Llibre("Català","0000000000002","Segona","La Catalana", amor, pepa)
+    amor1.save()
+    
+    grito = Titol("Grito","Terror el grito",terror)
+    grito.save()
+    
+    grito1 = Llibre("Català","0000000000003","Tercera","Maya", grito, jose)
     
     
     
