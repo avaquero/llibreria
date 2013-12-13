@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, url
+from llibres import views 
 
 from llibres import views
 
