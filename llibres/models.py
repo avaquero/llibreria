@@ -20,6 +20,7 @@ class Llibre(models.Model):
     edicio = models.CharField(max_length=50)
     editorial = models.CharField(max_length=200)
     titol = models.ForeignKey(Titol)
+    propietari = models.ForeignKey(Perfil)
     
     def __unicode__(self):
         return self.titol
