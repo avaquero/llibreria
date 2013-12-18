@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+
+{% block  title %} Inici - BookShare {% endblock %}
+{% block content %} 
+{% if llibres %}
+<ul>
+	{% for llibres in llibres %}
+
+	<li>
+		{{ llibres.titol }}
+	</li>
+
+	{% endfor %}
+</ul>
+{% else %}
+<p>
+	No books are available.
+</p>
+{% endif %} {% endblock %}
