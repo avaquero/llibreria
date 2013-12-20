@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+{% block  title %} Generes - BookShare {% endblock %}
+{% block content %} 
+<h1>Aquests són els generes que tenim disponibles</h1>
+{% if generes %}
+<ul>
+	{% for genere in generes %}
+
+	<li>
+		{{ genere.nom }}
+	</li>
+
+	{% endfor %}
+</ul>
+{% else %}
+<p>
+	No hi ha generes disponibles.
+</p>
+{% endif %} {% endblock %}
