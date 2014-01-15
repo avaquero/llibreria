@@ -1,6 +1,6 @@
 from django.db import models
 from usuaris.models import Perfil
-from llibres.models import Llibre
+from llibres.models import Llibre, Titol
 
 class Prestec(models.Model):
     dataPrestec = models.DateTimeField()
