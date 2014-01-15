@@ -1,8 +1,47 @@
 {% extends "base.html" %}
 
 
-{% block  title %} Inici - BookShare {% endblock %}
+{% block  title %} Home - BookShare {% endblock %}
+{% block estil %}a:link {
+
+				color: white;
+			}
+
+			body {
+				background-color: #717171;
+				text-align: center;
+				color: white;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			h1 {
+				color: #FF9900;
+				margin-bottom: 50px;
+			}
+
+			footer {
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				background-color: #4D4D4D;
+				border-radius: 15px;
+			}
+			footer img {
+				margin-left: 180px;
+			}{% endblock %}
 {% block content %} 
-<h1>HOla</h1>
+<div>
+			<header>
+				<h1>Benvinguts a Book Share</h1>
+			</header>
+			<div>
+				<h2>Aquesta pàgina es la pàgina principal</h2>
+				
+			</div>
+
+			<footer>
+				<a href="http://www.dinahosting.com"><img src="http://websalpunt.cat/wp-content/uploads/2013/10/dinahosting-pos-color_petit1.png" /></a>
+				<a href="http://www.websalpunt.cat"><img src="http://websalpunt.cat//wp-content/uploads/2013/10/puntcat.png" height="100" width="100"></a>
+			</footer>
+		</div>
 
  {% endblock %}
