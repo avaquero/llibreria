@@ -3,7 +3,7 @@
 <html lang="ca">
 	<head>
 		<meta charset="utf-8">
-
+		<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 		<title>{% block title %} base {% endblock %}</title>
 		<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
 		<meta http-equiv="Pragma" content="no-cache">
@@ -26,6 +26,10 @@
 		{% block content %}
 		patata
 		{% endblock %}
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="{% static 'bootstrap/jquery/jquery.js' %}"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 
 	</body>
 </html>
