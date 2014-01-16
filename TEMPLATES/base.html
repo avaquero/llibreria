@@ -8,11 +8,53 @@
 		<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
 		<meta http-equiv="Pragma" content="no-cache">
 		<meta http-equiv="Expires" content="0">
-		<style>{% block estil %} {%endblock %}</style>
+		<style>
+			{% block estil %} {%endblock %}
+		</style>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 
 	<body>
+		<nav class="navbar navbar-default" role="navigation">
+			{% block barra %}
+
+			<a class="navbar-brand" href="/">Home</a>
+
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active">
+						<a href="#">Prova</a>
+					</li>
+					<li>
+						
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Llibres <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="/llibres">Llistat de llibres</a>
+							</li>
+							<li>
+								<a href="/llibres/categories">Llistat de Categories</a>							
+							s</li>
+							<li>
+								<a href="#">Something else here</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="#">Separated link</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="#">One more separated link</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			{% endblock %}
+		</nav>
+
 		{% if messages %}
 		<ul class="messages">
 			{% for message in messages %}
@@ -23,12 +65,12 @@
 			{% endfor %}
 		</ul>
 		{% endif %}
-		
+
 		{% block content %}
 		patata
 		{% endblock %}
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="{% static 'bootstrap/jquery/jquery.js' %}"></script>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="{% static 'bootstrap/js/jquery.js' %}"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 
