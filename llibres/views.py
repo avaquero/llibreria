@@ -11,3 +11,4 @@ def generes(request):
     generes = Genere.objects.all()
     context = {'generes':generes}
     return render(request, 'generes.html', context)
+
