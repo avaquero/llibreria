@@ -10,4 +10,6 @@ urlpatterns = patterns('',
     url(r'^llibres/', include('llibres.urls', namespace='llibres')),
     url(r'^prestecs/', include('prestecs.urls',namespace='prestecs')),
     url(r'^admin/', include(admin.site.urls)),
+    url('', include('social.apps.django_app.urls', namespace='social'))
+
 )

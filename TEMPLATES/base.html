@@ -56,14 +56,24 @@
 		</nav>
 
 		{% if messages %}
+<<<<<<< HEAD
 		<ul class="messages">
 			{% for message in messages %}
-			<li
-			{% if message.tags %} class="{{message.tags}}"{% endif %}>
+			<li>
+			{% if message.tags %} class="{{message.tags}}"{% endif %}
 				{{ message }}
 			</li>
 			{% endfor %}
 		</ul>
+=======
+		{% load eines_extras %}
+			<ul class="messages">
+			  {% for message in messages %}
+			    {% get_twitter_bootstrap_alert_msg_css_name message.tags as alert_tag %}
+			    <li class="alert alert-{{ alert_tag }}">{{ message }}</li>
+			  {% endfor %}
+			</ul>
+>>>>>>> 7b8c98e800e5915c387602682f296bfa6b7e80ab
 		{% endif %}
 
 		{% block content %}
