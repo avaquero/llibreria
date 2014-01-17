@@ -9,7 +9,7 @@
 	{% for genere in generes %}
 
 	<li>
-		<a href="{% url 'llibres:editarGenere' genere.id %}">{{ genere.nom }}</a>
+		{{ genere.nom }}
 	</li>
 
 	{% endfor %}
@@ -19,5 +19,3 @@
 	No hi ha generes disponibles.
 </p>
 {% endif %} {% endblock %}
-
-

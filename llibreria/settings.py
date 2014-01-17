@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'llibres',
     'usuaris',
     'prestecs',
+    'llibreria',
     #autenticacio social:
     'social.apps.django_app.default',
 )
@@ -103,3 +104,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 #Templates
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'TEMPLATES'),]
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "fitxers_estatics"),
+)
