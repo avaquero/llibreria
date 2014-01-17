@@ -56,14 +56,13 @@
 		</nav>
 
 		{% if messages %}
-		<ul class="messages">
-			{% for message in messages %}
-			<li
-			{% if message.tags %} class="{{message.tags}}"{% endif %}>
-				{{ message }}
-			</li>
-			{% endfor %}
-		</ul>
+		{% load eines_extras %}
+			<ul class="messages">
+			  {% for message in messages %}
+			    {% get_twitter_bootstrap_alert_msg_css_name message.tags as alert_tag %}
+			    <li class="alert alert-{{ alert_tag }}">{{ message }}</li>
+			  {% endfor %}
+			</ul>
 		{% endif %}
 
 		{% block content %}
