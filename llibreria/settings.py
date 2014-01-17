@@ -59,6 +59,22 @@ ROOT_URLCONF = 'llibreria.urls'
 WSGI_APPLICATION = 'llibreria.wsgi.application'
 
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    
+    'django.core.context_processors.request',
+    'django.contrib.auth.context_processors.auth,'
+    #social auth
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
+    
+)
+
+#social auth
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.google.GoogleOAuth2',
+)
+
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
@@ -92,5 +108,3 @@ TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'TEMPLATES'),]
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "fitxers_estatics"),
 )
-
-
