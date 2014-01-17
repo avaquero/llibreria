@@ -36,7 +36,7 @@ def entradaGeneres(request, idGenere = None):
         if form.is_valid():
             form.save()
             messages.success(request, 'Genere introduit correctament')
-            return HttpResponseRedirect('/llibres/generes')
+            return HttpResponseRedirect('/llibres/llistatGeneres')
         else:
             messages.error(request, 'Ep! Hi ha hagut un error al introduir un genere')
     #Si no es POST serà GET, mostrem el formulari buit
