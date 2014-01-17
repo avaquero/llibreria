@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'usuaris',
     'prestecs',
     'llibreria',
+    'eines',
     #autenticacio social:
     'social.apps.django_app.default',
 )
