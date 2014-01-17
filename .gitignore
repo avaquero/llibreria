@@ -2,3 +2,5 @@
 .pydevproject
 dades/db.*
 *.pyc
+.settings/org.eclipse.core.resources.prefs
+.settings/*
