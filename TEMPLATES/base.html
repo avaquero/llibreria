@@ -56,16 +56,7 @@
 		</nav>
 
 		{% if messages %}
-<<<<<<< HEAD
-		<ul class="messages">
-			{% for message in messages %}
-			<li>
-			{% if message.tags %} class="{{message.tags}}"{% endif %}
-				{{ message }}
-			</li>
-			{% endfor %}
-		</ul>
-=======
+
 		{% load eines_extras %}
 			<ul class="messages">
 			  {% for message in messages %}
@@ -73,7 +64,6 @@
 			    <p class="alert alert-{{ alert_tag }}">{{ message }}</p>
 			  {% endfor %}
 			</ul>
->>>>>>> 7b8c98e800e5915c387602682f296bfa6b7e80ab
 		{% endif %}
 
 		{% block content %}
