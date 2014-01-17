@@ -11,20 +11,8 @@
 	</head>
 
 	<body>
-		{% if messages %}
-		<ul class="messages">
-			{% for message in messages %}
-			<li>
-			{% if message.tags %} class="{{message.tags}}"{% endif %}
-				{{ message }}
-			</li>
-			{% endfor %}
-		</ul>
-		{% endif %}
+		{% url social:begin "google-oauth2" %}
 		
-		{% block content %}
-		patata
-		{% endblock %}
-
+		{% url social:disconnect_individual provider, id %}
 	</body>
 </html>

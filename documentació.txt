@@ -1,0 +1,15 @@
+Documentació Python Social Auth:
+
+#http://python-social-auth.readthedocs.org/en/latest/storage.html#association
+
+#http://psa.matiasaguirre.net/
+
+Repositori: https://github.com/omab/python-social-auth
+
+Per poder funcionar s'ha de tenir instal·lat el python-social-auth!!
+
+$ pip install python-social-auth
+
+Or:
+
+$ easy_install python-social-auth
