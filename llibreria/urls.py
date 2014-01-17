@@ -8,5 +8,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     url(r'^$', 'llibres.views.home', name='home'),
     url(r'^llibres/', include('llibres.urls', namespace='llibres')),
+    url(r'^prestecs/', include('prestecs.urls',namespace='prestecs')),
     url(r'^admin/', include(admin.site.urls)),
 )

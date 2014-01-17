@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+{% block  title %} Generes - BookShare {% endblock %}
+{% block content %} 
+<h1>Aquests són els prestecs que hi ha</h1>
+{% if generes %}
+<ul>
+	{% for prestec in prestecs %}
+
+	<li>
+		<a href="{% url 'prestecs:editarPrestec' llibre.id %}">{{ prestec.beneficiari }}</a>
+	</li>
+
+	{% endfor %}
+</ul>
+{% else %}
+<p>
+	No hi ha prestecs disponibles.
+</p>
+{% endif %} {% endblock %}
