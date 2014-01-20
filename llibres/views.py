@@ -2,7 +2,7 @@
 from django.shortcuts import render, get_object_or_404
 
 from django.http import HttpResponse
-from llibres.models import Titol, Genere
+from llibres.models import Titol, Genere, Llibre
 from django.http.response import HttpResponseRedirect
 from llibres.forms import FormGenere
 from django.contrib import messages
@@ -14,6 +14,12 @@ def index(request):
     llibres = Titol.objects.all()
     context = {'llibres': llibres}
     return render(request, 'index.html', context)
+
+def fitxaLlibre(request, idLlibre):
+    llibre = get_object_or_404(Llibre, pk=idLlibre)
+    context = {'llibre': llibre}
+    return render(request, 'fitxaLlibre.html', context)
+
 
 def llistatGeneres(request):
     generes = Genere.objects.all()
@@ -41,4 +47,5 @@ def entradaGeneres(request, idGenere = None):
         form = FormGenere(instance=genere)
         
     return render(request, 'entradaGenere.html', {'form':form,})
+
 

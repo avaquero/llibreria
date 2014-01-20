@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 
-{%  if llibre %}
+
 {% block  title %} Fitxa del llibre {{ llibre.titol }} - BookShare {% endblock %}
 {% block content %} 
+{%  if llibre %}
 	<h1>Nom del llibre: {{ llibre.titol }}</h1>
 	<div>
 		<h2> Sinopsi </h2>
+		{{ llibre.titol.sinopsis }}
 	</div>
 	<input type="submit" value="Editar">
 
@@ -13,5 +15,6 @@
 	<div> 
 		<p> Error amb el llibre demanat. </p> 
 	</div>
+	{% endif %} 
 {% endblock %}
-{% endif %} 
+
