@@ -10,4 +10,4 @@ class FormSolicitutPrestec(ModelForm):
 class FormPrestec(ModelForm):
     class Meta:
         model = Prestec
-        fields = ['dataPrestec','beneficiari', 'prestamista', 'llibre']
+        fields = ['dataPrestec','beneficiari', 'prestamista', 'llibre', 'estat']
