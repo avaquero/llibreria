@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+{% block  title %} Usuaris - BookShare {% endblock %}
+{% block content %} 
+<h1>Aquests són els usuaris que tenim disponibles</h1>
+{% if usuaris %}
+<ul>
+	{% for usuari in usuaris %}
+
+	<li>
+		{{ usuari.usuari }}
+	</li>
+
+	{% endfor %}
+</ul>
+{% else %}
+<p>
+	No hi ha generes disponibles.
+</p>
+{% endif %} {% endblock %}

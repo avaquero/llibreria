@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Entrar prestec</title>
+	</head>
+	<body>
+		<div>
+			<form action="" method="post">{% csrf_token %}
+			{{ form.as_p }}
+			<br>
+			<input type="submit" value="Crear" />
+			</form>
+		</div>
+	</body>
+</html>

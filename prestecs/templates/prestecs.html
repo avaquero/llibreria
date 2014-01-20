@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
 
-{% block  title %} Generes - BookShare {% endblock %}
+{% block  title %} Prestecs - BookShare {% endblock %}
 {% block content %} 
 <h1>Aquests són els prestecs que hi ha</h1>
-{% if generes %}
+{% if prestecs %}
 <ul>
 	{% for prestec in prestecs %}
 
 	<li>
-		<a href="{% url 'prestecs:editarPrestec' llibre.id %}">{{ prestec.beneficiari }}</a>
+		<a href="">{{ prestec.beneficiari }}</a>
 	</li>
 
 	{% endfor %}

@@ -5,3 +5,5 @@ from django.contrib.auth.models import User
 class Perfil(models.Model):
     usuari = models.OneToOneField(User)
     
+    def __unicode__(self):
+        return self.usuari
