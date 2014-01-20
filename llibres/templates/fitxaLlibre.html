@@ -1,21 +1,17 @@
 {% extends "base.html" %}
 
-
-{% block  title %} Generes - BookShare {% endblock %}
+{%  if llibre %}
+{% block  title %} Fitxa del llibre {{ llibre.titol }} - BookShare {% endblock %}
 {% block content %} 
-<h1>Aquests són els generes que tenim disponibles</h1>
-{% if generes %}
-<ul>
-	{% for genere in generes %}
+	<h1>Nom del llibre: {{ llibre.titol }}</h1>
+	<div>
+		<h2> Sinopsi </h2>
+	</div>
+	<input type="submit" value="Editar">
 
-	<li>
-		<a href="{% url 'llibres:editarGenere' genere.id %}">{{ genere.nom }}</a>
-	</li>
-
-	{% endfor %}
-</ul>
 {% else %}
-<p>
-	No hi ha generes disponibles.
-</p>
-{% endif %} {% endblock %}
+	<div> 
+		<p> Error amb el llibre demanat. </p> 
+	</div>
+{% endblock %}
+{% endif %} 
