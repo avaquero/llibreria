@@ -9,7 +9,7 @@
 	{% for genere in generes %}
 
 	<li>
-		{{ genere.nom }}
+		<a href="{% url 'llibres:editarGenere' genere.id %}">{{ genere.nom }}</a>
 	</li>
 
 	{% endfor %}
