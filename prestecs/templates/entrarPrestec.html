@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-	<head>
-		<title>Entrar prestec</title>
-	</head>
-	<body>
+{% extends "base.html" %}
+
+
+{% block  title %} Nou Prestec - BookShare {% endblock %}
+{% block content %} 
 		<div>
 			<form action="" method="post">{% csrf_token %}
 			{{ form.as_p }}
@@ -11,5 +10,4 @@
 			<input type="submit" value="Crear" />
 			</form>
 		</div>
-	</body>
-</html>
+{% endblock %}
