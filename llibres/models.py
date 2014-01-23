@@ -1,6 +1,12 @@
 from django.db import models
 from usuaris.models import Perfil
 
+ESTATS_LLIBRES_CHOICES = (
+    ('disponible', 'Disponible'),
+    ('pendent', 'Pendent d\'intercanvi'),
+    ('prestat', 'Prestat'),
+)
+
 class Genere(models.Model):
     nom = models.CharField(max_length=200, unique =  True, help_text = "Nom del genere")
     
@@ -22,6 +28,9 @@ class Llibre(models.Model):
     editorial = models.CharField(max_length=200)
     titol = models.ForeignKey(Titol)
     propietari = models.ForeignKey(Perfil)
+    estat = models.CharField(max_length=20, choices=ESTATS_LLIBRES_CHOICES)
+    
+    
     
     def __unicode__(self):
         return self.titol
