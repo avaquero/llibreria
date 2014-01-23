@@ -9,8 +9,8 @@
 		<h2> Sinopsi </h2>
 		{{ llibre.titol.sinopsis }}
 	</div>
-	<a href="{% url 'llibres:nouGenere' %}" class="btn btn-default">Editar</a>
-	<input type="submit" value="Editar">
+	<a href="{% url 'llibres:editarLlibre' llibre.id %}" class="btn btn-default">Editar</a>
+	
 
 {% else %}
 	<div> 

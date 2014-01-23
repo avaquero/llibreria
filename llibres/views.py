@@ -33,7 +33,7 @@ def entradaLlibre(request, idLlibre =  None):
         if form.is_valid():
             form.save()
             messages.success(request, 'Llibre introduit correctament')
-            return HttpResponseRedirect('{% url "llibres" %}')
+            return HttpResponseRedirect('/llibres')
         else:
             messages.error(request, "Ep! Hi ha hagut un error al introduir un llibre")
     #Si no es POST serà GET, mostrem el formulari buit
