@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from llibres.models import Titol, Genere, Llibre
 from django.http.response import HttpResponseRedirect
-from llibres.forms import FormGenere
+from llibres.forms import FormGenere, FormLlibre
 from django.contrib import messages
 
 
@@ -20,6 +20,26 @@ def fitxaLlibre(request, idLlibre):
     context = {'llibre': llibre}
     return render(request, 'fitxaLlibre.html', context)
 
+def entradaLlibre(request, idLlibre =  None):
+    #Si idLlibre es None creem un nou llibre, sinó l'editem
+    if idLlibre is not None:
+        llibre = get_object_or_404(Llibre, pk = idLlibre)
+    else:
+        llibre = Llibre()
+    #Si el metode es POST tractem les dades
+    if request.method == 'POST':
+        form = FormLlibre(request.POST, instance = llibre)
+    #Si les dades son correctres, les procressem i redirigim a la llista de llibres
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Llibre introduit correctament')
+            return HttpResponseRedirect('{% url "llibres" %}')
+        else:
+            messages.error(request, "Ep! Hi ha hagut un error al introduir un llibre")
+    #Si no es POST serà GET, mostrem el formulari buit
+    else:
+        form = FormLlibre(instance = llibre)
+    return render(request, 'entradaLlibre.html', {'form':form,})
 
 def llistatGeneres(request):
     generes = Genere.objects.all()

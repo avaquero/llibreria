@@ -5,10 +5,10 @@
 {% block content %} 
 {% if llibres %}
 <ul>
-	{% for llibres in llibres %}
+	{% for llibre in llibres %}
 
 	<li>
-		{{ llibres.titol }}
+		<a href="{% url 'llibres:fitxaLlibre' llibre.id %}">{{ llibre.titol }}</a>
 	</li>
 
 	{% endfor %}

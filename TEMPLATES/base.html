@@ -18,7 +18,7 @@
 		<nav class="navbar navbar-default" role="navigation">
 			{% block barra %}
 
-			<a class="navbar-brand" href="/">Home</a>
+			<a class="navbar-brand" href="{% url 'home' %}">Home</a>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
@@ -32,14 +32,15 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Llibres <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li>
-								<a href="/llibres">Llistat de llibres</a>
+								<a href="{% url 'llibres:index' %}">Llistat de llibres</a>
 							</li>
 							<li>
-								<a href="/llibres/llistatGeneres">Llistat de generes</a>							
+								<a href="{% url 'llibres:nouGenere' %}">Afegir Genere</a>
 							</li>
 							<li>
-								<a href="#">Something else here</a>
+								<a href="{% url 'llibres:llistatGeneres' %}">Llistat de generes</a>							
 							</li>
+							
 							<li class="divider"></li>
 							<li>
 								<a href="#">Separated link</a>

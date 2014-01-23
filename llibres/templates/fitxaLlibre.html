@@ -3,12 +3,13 @@
 
 {% block  title %} Fitxa del llibre {{ llibre.titol }} - BookShare {% endblock %}
 {% block content %} 
-{%  if llibre %}
+{% if llibre %}
 	<h1>Nom del llibre: {{ llibre.titol }}</h1>
 	<div>
 		<h2> Sinopsi </h2>
 		{{ llibre.titol.sinopsis }}
 	</div>
+	<a href="{% url 'llibres:nouGenere' %}" class="btn btn-default">Editar</a>
 	<input type="submit" value="Editar">
 
 {% else %}
