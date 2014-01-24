@@ -68,4 +68,12 @@ def entradaGeneres(request, idGenere = None):
         
     return render(request, 'entradaGenere.html', {'form':form,})
 
+def llistatTitolsDeGenere(request, idGenere):
+    titols = get_object_or_404(Titol, genere = idGenere )
+    genere = get_object_or_404(Genere, pk=idGenere)
+    context = {'titols':titols, 'genere':genere}
+    
+    return render(request, 'llistaTitolsGenere.html', context)
+    
+
 

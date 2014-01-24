@@ -11,4 +11,5 @@ urlpatterns = patterns('',
     url(r'^editarGenere/(?P<idGenere>\d+)$', views.entradaGeneres, name='editarGenere'),
     url(r'^nouLlibre/$', views.entradaLlibre, name='nouLlibre'),
     url(r'^editarLlibre/(?P<idLlibre>\d+)$', views.entradaLlibre, name='editarLlibre'),
+    url(r'^genere/(?P<idGenere>\d+)$', views.llistatTitolsDeGenere, name='titolsDeGenere'),
 )
