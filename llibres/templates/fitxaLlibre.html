@@ -14,16 +14,17 @@
 			<div class="col-md-6">
 				<div class="jumbotron">
 					<p> ISBN: {{ llibre.isbn }}</p>
-					<p> Editorial: {{ llibre.editorial }} {{ llibre.edicio }} edició </p>
+					<p> Editorial: {{ llibre.editorial }} ({{ llibre.edicio }} edició) </p>
 					<p> Gènere: {{ llibre.titol.genere }} </p>
 					<h2> Sinopsi </h2>
 					<p> {{ llibre.titol.sinopsis }} </p>
 					<h2>Informació prestec</h2>
 					<p> Propietari {{ llibre.propietari }} </p>
-					<p> Estat</p>{{ llibre.estat }}
+					<p> Estat {{ llibre.estat }} </p>
 				</div>
 			</div>
 			<div class="col-md-6">
+				<img height="360px" width="300px" src="">
 				<a href="{% url 'llibres:editarLlibre' llibre.id %}" class="btn btn-default">Editar</a>
 			</div>
 		</div>
