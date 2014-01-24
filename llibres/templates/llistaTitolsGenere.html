@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+
+{% block  title %} Titols de {{genere.nom}} - BookShare {% endblock %}
+{% block content %} 
+<h1>Aquests són els titols del genere {{genere.nom}} que tenim disponibles</h1>
+{% if titols %}
+<ul>
+	{% for titol in titols %}
+
+	<li>
+		<!--<a href="{% url 'llibres:fitxaLlibre' genere.id %}">{{ genere.nom }}</a>-->
+		{{titol.titol}}
+	</li>
+
+	{% endfor %}
+</ul>
+{% else %}
+<p>
+	No hi ha generes disponibles.
+</p>
+{% endif %} {% endblock %}
+
+
