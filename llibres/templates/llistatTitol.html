@@ -9,8 +9,8 @@
 	{% for titol in titols %}
 
 	<li>
-		<!--<a href="{% url 'llibres:fitxaLlibre' titol.id %}">{{ titol.nom }}</a>-->
-		{{titol.titol}}
+		<a href="{% url 'llibres:fitxaTitol' titol.id %}">{{ titol.titol }}</a>
+		
 	</li>
 
 	{% endfor %}

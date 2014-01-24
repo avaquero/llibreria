@@ -26,13 +26,13 @@
 						<a href="#">Prova</a>
 					</li>
 					<li>
-						
+
 					</li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Llibres <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li>
-								<a href="{% url 'llibres:nouLlibre' %}">Afegir Llibre</a>							
+								<a href="{% url 'llibres:nouLlibre' %}">Afegir Llibre</a>
 							</li>
 							<li>
 								<a href="{% url 'llibres:index' %}">Llistat de llibres</a>
@@ -42,19 +42,18 @@
 								<a href="{% url 'llibres:nouGenere' %}">Afegir Genere</a>
 							</li>
 							<li>
-								<a href="{% url 'llibres:llistatGeneres' %}">Llistat de generes</a>							
-							</li>
-							
-							
-							
-							<li class="divider"></li>
-							<li>
-								<a href="#">Separated link</a>
+								<a href="{% url 'llibres:llistatGeneres' %}">Llistat de generes</a>
 							</li>
 							<li class="divider"></li>
 							<li>
-								<a href="#">One more separated link</a>
+								<a href="{% url 'llibres:nouTitol' %}">Afegir Titol</a>
 							</li>
+							<li>
+								<a href="{% url 'llibres:llistatTitols' %}">Llistat de titols</a>
+							</li>
+							
+							<li class="divider"></li>
+							
 						</ul>
 					</li>
 					<li class="dropdown">
@@ -64,7 +63,7 @@
 								<a href="/prestecs">Llistat de Prestecs</a>
 							</li>
 							<li>
-								<a href="/prestecs/nouPrestec">Nou prestec</a>							
+								<a href="/prestecs/nouPrestec">Nou prestec</a>
 							</li>
 							<li>
 								<a href="#">Something else here</a>
@@ -87,12 +86,14 @@
 		{% if messages %}
 
 		{% load eines_extras %}
-			<ul class="messages">
-			  {% for message in messages %}
-			    {% get_twitter_bootstrap_alert_msg_css_name message.tags as alert_tag %}
-			    <p class="alert alert-{{ alert_tag }}">{{ message }}</p>
-			  {% endfor %}
-			</ul>
+		<ul class="messages">
+			{% for message in messages %}
+			{% get_twitter_bootstrap_alert_msg_css_name message.tags as alert_tag %}
+			<p class="alert alert-{{ alert_tag }}">
+				{{ message }}
+			</p>
+			{% endfor %}
+		</ul>
 		{% endif %}
 
 		{% block content %}

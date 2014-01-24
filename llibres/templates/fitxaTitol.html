@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+{% block  title %} Fitxa del titol {{ llibre.titol }} - BookShare {% endblock %}
+{% block content %} 
+{% if llibre %}
+	<h1>Nom del llibre: {{ llibre.titol }}</h1>
+	<div>
+		<h2> Sinopsi </h2>
+		{{ llibre.titol.sinopsis }}
+	</div>
+	<a href="{% url 'llibres:editarTitol' llibre.id %}" class="btn btn-default">Editar</a>
+	
+
+{% else %}
+	<div> 
+		<p> Error amb el llibre demanat. </p> 
+	</div>
+	{% endif %} 
+{% endblock %}
+
