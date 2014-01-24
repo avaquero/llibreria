@@ -63,6 +63,6 @@ def crea():
     grito.save()
     
     grito1 = Llibre(idioma = "Català", isbn = "0000000000003", edicio = "Tercera", editorial = "Maya", titol = grito, propietari = jose)
-    
+    grito1.save()
     
     
