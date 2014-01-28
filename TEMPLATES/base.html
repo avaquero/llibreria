@@ -21,15 +21,12 @@
 			}
 
 			footer {
-				position: absolute;
-				bottom: 0;
+				position: bottom;
 				width: 100%;
 				background-color: #4D4D4D;
 				border-radius: 15px;
 				text-align: right;
 			}
-			
-			
 			{% endblock %}
 		</style>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -124,8 +121,8 @@
 		{% block peu %}
 		<footer>
 			Col·laboradors:
-				<a href="http://www.dinahosting.com"><img src="http://websalpunt.cat/wp-content/uploads/2013/10/dinahosting-pos-color_petit1.png" height="50" width="130" /></a>
-				<a href="http://zwww.websalpunt.cat"><img src="http://websalpunt.cat//wp-content/uploads/2013/10/puntcat.png" height="60" width="60"></a>
+				<a href="http://www.dinahosting.com"><img src={%static "imatges/dinahosting.png" %} height="50" width="130" /></a>
+				<a href="http://zwww.websalpunt.cat"><img src={%static "imatges/puntcat.png" %} height="60" width="60"></a>
 			</footer>
 		{% endblock %}
 		
