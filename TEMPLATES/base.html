@@ -9,7 +9,28 @@
 		<meta http-equiv="Pragma" content="no-cache">
 		<meta http-equiv="Expires" content="0">
 		<style>
-			{% block estil %} {% endblock %}
+			{% block estil %} 
+			body {
+				background-color: #717171;
+				text-align: center;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			h1 {
+				color: #FF9900;
+				margin-bottom: 50px;
+			}
+
+			footer {
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				background-color: #4D4D4D;
+				border-radius: 15px;
+				text-align: right;
+			}
+			
+			
+			{% endblock %}
 		</style>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
@@ -99,6 +120,15 @@
 		{% block content %}
 		patata
 		{% endblock %}
+		
+		{% block peu %}
+		<footer>
+			Col·laboradors:
+				<a href="http://www.dinahosting.com"><img src="http://websalpunt.cat/wp-content/uploads/2013/10/dinahosting-pos-color_petit1.png" height="50" width="130" /></a>
+				<a href="http://zwww.websalpunt.cat"><img src="http://websalpunt.cat//wp-content/uploads/2013/10/puntcat.png" height="60" width="60"></a>
+			</footer>
+		{% endblock %}
+		
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="{% static 'bootstrap/js/jquery.js' %}"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
