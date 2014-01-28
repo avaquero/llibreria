@@ -42,6 +42,10 @@ def crea():
     romantico = Genere()
     romantico.nom = "Romantico"
     romantico.save()
+    historica = Genere("Historica")
+    historica.save()
+    manuals = Genere("Manuals")
+    manuals.save()
     #---------------------Titols---------------------------
     harrypotter = Titol()
     harrypotter.titol = "Harry Potter i la pedra filosofal"
