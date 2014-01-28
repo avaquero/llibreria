@@ -14,22 +14,22 @@
 		</div>
 		<div class="row col-md-12">
 			<div class="col-md-6">
-				<div class="jumbotron">
+				<div class="jumbotron" style="font-size:15px">
 					<p> ISBN: {{ llibre.isbn }}</p>
 					<p> Editorial: {{ llibre.editorial }} ({{ llibre.edicio }} edició) </p>
 					<p> Gènere: {{ llibre.titol.genere }} </p>
-					<h2> Sinopsi </h2>
+					<h3> Sinopsi </h3>
 					<p> {{ llibre.titol.sinopsis }} </p>
-					<h2>Informació prestec</h2>
-					<p> Propietari {{ llibre.propietari }} </p>
-					<p> Estat {{ llibre.estat }} </p>
+					<h3>Informació prestec</h3>
+					<p> Propietari: {{ llibre.propietari }} </p>
+					<p> Estat: {{ llibre.estat }} </p>
 				</div>
 			</div>
 			<div class="col-md-6">
-				{% if llibre.imatge %}
-					<img height="360px" width="300px" src="{{ llibre.imatge }}">
+				{% if llibre.titol.imatge %}
+					<img height="360px" width="300px" class="img-responsive" src="{{ llibre.titol.imatge }}">
 				{% else %}
-					<img height="360px" width="300px" src={%static "imatges/no.png" %}>
+					<img height="360px" width="300px" class="img-responsive" src={%static "imatges/no.png" %}>
 				{% endif %}
 			</div>
 			<div class="row" id="button1">

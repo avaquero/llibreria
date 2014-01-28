@@ -10,7 +10,11 @@
 
 	<li>
 		<a href="{% url 'llibres:fitxaTitol' titol.id %}">{{ titol.titol }}</a>
-		
+		{% if titol.imatge %}
+			<img height="360px" width="300px" class="img-responsive" src="{{ titol.imatge }}">
+		{% else %}
+			<img height="360px" width="300px" class="img-responsive" src={%static "imatges/no.png" %}>
+		{% endif %}
 	</li>
 
 	{% endfor %}
