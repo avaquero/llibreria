@@ -42,9 +42,13 @@ def crea():
     romantico = Genere()
     romantico.nom = "Romantico"
     romantico.save()
-    historica = Genere("Historica")
+    
+    historica = Genere()
+    historica.nom = "Historica"
     historica.save()
-    manuals = Genere("Manuals")
+    
+    manuals = Genere()
+    manuals.nom = "Manuals"
     manuals.save()
     #---------------------Titols---------------------------
     harrypotter = Titol()
@@ -52,12 +56,13 @@ def crea():
     harrypotter.sinopsis = "Primer de Harry Potter"
     harrypotter.genere = fantasia
     harrypotter.save()
+
     amor = Titol(titol = "Amor Amor", sinopsis = "Llibre d'amor", genere = romantico)
     amor.save()
-    amor = Titol(titol = "Amor Amor", sinopsis = "Llibre d'amor", genere = romantico)
-    amor.save()
+
     grito = Titol(titol ="Grito",sinopsis ="Terror el grito",genere =terror)
     grito.save()
+    
     #-----------------------------Llibres-----------------
     harry1 = Llibre()
     harry1.idioma = "Català"
