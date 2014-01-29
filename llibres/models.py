@@ -17,7 +17,8 @@ class Titol(models.Model):
     titol = models.CharField(max_length=200, unique = True, help_text = "Titol del llibre")
     sinopsis = models.CharField(max_length=500)
     genere = models.ForeignKey(Genere)
-    
+    imatge = models.FileField(upload_to="titolsImatges", blank=True)
+
     def __unicode__(self):
         return self.titol
     

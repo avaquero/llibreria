@@ -113,3 +113,5 @@ TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'TEMPLATES'),]
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "fitxers_estatics"),
 )
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "titolsImatges")
