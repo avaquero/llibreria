@@ -9,7 +9,7 @@
 	{% for prestec in prestecs %}
 
 	<li>
-		<a href="{% url 'prestecs:edita_prestec' prestec.id %}">{{ prestec.id }}</a>
+		<a href="{% url 'prestecs:edita_prestec' prestec.id %}">{{ prestec.id }} - {{ prestec.beneficiari }}</a>
 	</li>
 
 	{% endfor %}
