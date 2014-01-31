@@ -115,6 +115,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "fitxers_estatics"),
 )
 
+##Defineixo on van les imatges del titols
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
