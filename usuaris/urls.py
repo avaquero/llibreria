@@ -3,4 +3,6 @@ from usuaris import views
 
 urlpatterns = patterns('',
     url(r'^$', views.llistatUsuaris, name='llistatUsuaris'),
+    url(r'^login$', views.entrada, name='login'),
+    url(r'^logout$', views.logout_view, name='logout'),
 )

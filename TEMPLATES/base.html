@@ -93,6 +93,14 @@
 							</li>
 						</ul>
 					</li>
+					
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					{% if user.is_authenticated %}
+						<li><a href="{% url 'usuaris:logout' %}">Logout</a></li>
+					{% else %}
+						<li><a href="{% url 'usuaris:login' %}">Login</a></li>
+					{% endif %}
 				</ul>
 			</div>
 			{% endblock %}
