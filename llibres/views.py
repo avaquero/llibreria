@@ -34,6 +34,7 @@ def entradaLlibre(request, idLlibre =  None):
     #Si el metode es POST tractem les dades
     if request.method == 'POST':
         form = FormLlibre(request.POST, instance = llibre)
+        
     #Si les dades son correctres, les procressem i redirigim a la llista de llibres
         if form.is_valid():
             form.save()
@@ -89,7 +90,7 @@ def entradaTitols(request, idTitol = None):
         titol = Titol()
     #Si el metode es POST tractem les dades
     if request.method == 'POST':
-        form = FormTitol(request.POST, instance = titol)
+        form = FormTitol(request.POST, request.FILES, instance = titol)
         #Si les dades son correctes, les processem i redirigim a la llista de generes
         if form.is_valid():
             form.save()

@@ -114,6 +114,8 @@ TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'TEMPLATES'),]
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "fitxers_estatics"),
 )
-PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
+
+##Defineixo on van les imatges del titols
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+

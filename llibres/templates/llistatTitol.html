@@ -4,25 +4,27 @@
 
 {% block  title %} Titols de {{genere.nom}} - BookShare {% endblock %}
 {% block content %} 
-<h1>Aquests són els titols del genere {{genere.nom}} que tenim disponibles</h1>
+<h1>Títols disponibles</h1>
 {% if titols %}
 <ul>
-	{% for titol in titols %}
-
-	<li>
-		<a href="{% url 'llibres:fitxaTitol' titol.id %}">{{ titol.titol }}</a>
-		{% if titol.imatge %}
-			<img height="360px" width="300px" class="img-responsive" src="{{ titol.imatge }}">
-		{% else %}
-			<img height="360px" width="300px" class="img-responsive" src={%static "imatges/no.png" %}>
-		{% endif %}
-	</li>
-
-	{% endfor %}
+	<div class="container">
+			<div class="row col-md-12">
+			{% for titol in titols %}
+				<div class="col-md-4 col-sm-offset-1 jumbotron" style="font-size:15px">
+					<h4> <a href="{% url 'llibres:fitxaTitol' titol.id %}">{{ titol.titol }}</a> </h4>
+					{% if titol.imatge %}
+						<img height="360px" width="200px" class="img-responsive" src="{{ MEDIA_URL }}{{ titol.imatge }}">
+					{% else %}
+						<img height="360px" width="200px" class="img-responsive" src={%static "imatges/no.png" %}>
+					{% endif %}			
+				</div>
+			{% endfor %}
+			</div>
 </ul>
+</div>
 {% else %}
 <p>
-	No hi ha generes disponibles.
+	No hi ha cap títol disponible.
 </p>
 {% endif %} {% endblock %}
 
