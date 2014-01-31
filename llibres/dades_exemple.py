@@ -55,17 +55,17 @@ def crea():
     harrypotter.titol = "Harry Potter i la pedra filosofal"
     harrypotter.sinopsis = "Primer de Harry Potter"
     harrypotter.genere = fantasia
+    harrypotter.idioma = "Català"
     harrypotter.save()
 
-    amor = Titol(titol = "Amor Amor", sinopsis = "Llibre d'amor", genere = romantico)
+    amor = Titol(titol = "Amor Amor", sinopsis = "Llibre d'amor",idioma = "Català", genere = romantico)
     amor.save()
 
-    grito = Titol(titol ="Grito",sinopsis ="Terror el grito",genere =terror)
+    grito = Titol(titol ="Grito", idioma = "Castellà", sinopsis ="Terror el grito",genere =terror)
     grito.save()
     
     #-----------------------------Llibres-----------------
     harry1 = Llibre()
-    harry1.idioma = "Català"
     harry1.isbn = "0000000000001"
     harry1.edicio = "Primera"
     harry1.editorial = "La Castellana"
@@ -73,10 +73,10 @@ def crea():
     harry1.propietari = pepe
     harry1.save()
     
-    amor1 = Llibre(idioma = "Català",isbn = "0000000000002",edicio = "Segona",editorial = "La Catalana", titol = amor, propietari = pepa)
+    amor1 = Llibre(isbn = "0000000000002",edicio = "Segona",editorial = "La Catalana", titol = amor, propietari = pepa)
     amor1.save()
     
-    grito1 = Llibre(idioma = "Català", isbn = "0000000000003", edicio = "Tercera", editorial = "Maya", titol = grito, propietari = jose)
+    grito1 = Llibre(isbn = "0000000000003", edicio = "Tercera", editorial = "Maya", titol = grito, propietari = jose)
     grito1.save()
     
     
