@@ -10,6 +10,11 @@ def crea():
     pepe_usr = User.objects.create_user( 'pepe', 'pepe@bookshare.cat', 'pepe1' )
     jose_usr = User.objects.create_user( 'jose', 'jose@bookshare.cat', 'jose1' )
     pepa_usr = User.objects.create_user( 'pepa', 'pepa@bookshare.cat', 'pepa1' )
+    oriol_usr = User.objects.create_user('oriol', 'oriol@bookshare.cat', 'oriol1')
+    oriol_usr.save()
+    oriol = Perfil()
+    oriol.usuari = oriol_usr;
+    oriol.save()
     
     pepe_usr.save()
     jose_usr.save()
@@ -64,7 +69,18 @@ def crea():
     grito = Titol(titol ="Grito", idioma = "Castellà", sinopsis ="Terror el grito",genere =terror)
     grito.save()
     
+    hp2 = Titol(titol = "Harry Potter i la camara secreta", idioma = "Català",sinopsis="Segon any d'en Harry a Hogwarts", genere = fantasia)
+    hp2.save()
+    
     #-----------------------------Llibres-----------------
+    harry2 = Llibre()
+    harry2.isbn = "0000000000002"
+    harry2.edicio = "Cinquena"
+    harry2.editorial = "Empuries"
+    harry2.titol = hp2
+    harry2.propietari = oriol
+    harry2.save()
+    
     harry1 = Llibre()
     harry1.isbn = "0000000000001"
     harry1.edicio = "Primera"
