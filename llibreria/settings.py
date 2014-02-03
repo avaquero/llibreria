@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -25,7 +24,6 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -57,7 +55,6 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'llibreria.urls'
 
 WSGI_APPLICATION = 'llibreria.wsgi.application'
-
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     
@@ -98,9 +95,24 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
+
+
+#SOCIAL AUTH GOOGLE Oauth2:
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '' #afegir les keys enviades privadament!
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '' #afegir el secret enviat privadament!
+
+#SOCIAL AUTH FACEBOOK Oauth2:
+
+#SOCIAL_AUTH_FACEBOOK_KEY = '' afegir les keys enviades previament!
+#SOCIAL_AUTH_FACEBOOK_SECRET = '' afegir el secret enviat previament!
+
+#URLS SOCIAL AUTH
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/logged-in/'
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/login-error/'
+SOCIAL_AUTH_LOGIN_URL = '/login-url/'
 
 STATIC_URL = '/static/'
 #Templates
