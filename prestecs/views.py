@@ -6,13 +6,15 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.http.response import HttpResponseRedirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def llistatPrestecs(request):
     prestecs = Prestec.objects.all()
     context = {'prestecs':prestecs}
     return render(request, 'prestecs.html', context)
 
+@login_required
 def nouPrestec(request, idPrestec =  None):
     #Si idLlibre es None creem un nou llibre, sinó l'editem
     if idPrestec is not None:

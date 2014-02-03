@@ -5,17 +5,24 @@
 {% block content %} 
 <h1>Aquests són els usuaris que tenim disponibles</h1>
 {% if usuaris %}
-<ul>
-	{% for usuari in usuaris %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<ul class="list-group">
+					{% for usuari in usuaris %}
+						<li class="list-group-item">
+							<span class="glyphicon glyphicon-user"></span> {{ usuari.usuari }}
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="col-md-4"></div>
+	</div>
+</div>
 
-	<li>
-		{{ usuari.usuari }}
-	</li>
-
-	{% endfor %}
-</ul>
 {% else %}
 <p>
-	No hi ha generes disponibles.
+	No hi ha usuaris disponibles.
 </p>
 {% endif %} {% endblock %}
