@@ -6,21 +6,16 @@
 {% block content %} 
 <h1>Títols disponibles</h1>
 {% if titols %}
-<ul>
-	<div class="container">
+<div class="container">
+	<ul>
 			<div class="row col-md-12">
 			{% for titol in titols %}
 				<div class="col-md-4 col-sm-offset-1 jumbotron" style="font-size:15px">
-					<h4> <a href="{% url 'llibres:fitxaTitol' titol.id %}">{{ titol.titol }}</a> </h4>
-					{% if titol.imatge %}
-						<img height="360px" width="200px" class="img-responsive" src="{{ MEDIA_URL }}{{ titol.imatge }}">
-					{% else %}
-						<img height="360px" width="200px" class="img-responsive" src={%static "imatges/no.png" %}>
-					{% endif %}			
+					<h4> <a href="{% url 'llibres:fitxaTitol' titol.id %}">{{ titol.titol }}</a> </h4>		
 				</div>
 			{% endfor %}
 			</div>
-</ul>
+	</ul>
 </div>
 {% else %}
 <p>

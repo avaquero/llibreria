@@ -12,9 +12,9 @@ class FormGenere(ModelForm):
 class FormTitol(ModelForm):
     class Meta:
         model = Titol
-        fields = ['titol','sinopsis','genere', 'imatge', 'idioma']
+        fields = ['titol','sinopsis','genere', 'idioma']
 
 class FormLlibre(ModelForm):
     class Meta:
         model = Llibre
-        fields = ['isbn', 'edicio', 'editorial', 'titol', 'propietari', 'estat']
+        fields = ['isbn', 'edicio', 'editorial', 'titol', 'propietari', 'estat', 'imatge']
