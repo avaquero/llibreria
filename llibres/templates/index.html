@@ -1,20 +1,31 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 
-{% block  title %} Inici - BookShare {% endblock %}
+{% block  title %} Llibres - BookShare {% endblock %}
 {% block content %} 
+<h1>Llibres disponibles</h1>
 {% if llibres %}
 <ul>
-	{% for llibres in llibres %}
-
-	<li>
-		{{ llibres.titol }}
-	</li>
-
-	{% endfor %}
+	<div class="container">
+			<div class="row col-md-12">
+			{% for llibre in llibres %}
+				<div class="col-md-4 col-sm-offset-1 jumbotron" style="font-size:15px">
+					<a href="{% url 'llibres:fitxaLlibre' llibre.id %}">{{ llibre.titol }}</a>
+					{% if llibre.titol.imatge %}
+						<img height="360px" width="200px" class="img-responsive" src="{{ MEDIA_URL }}{{ llibre.titol.imatge }}">
+					{% else %}
+						<img height="360px" width="200px" class="img-responsive" src={%static "imatges/no.png" %}>
+					{% endif %}	
+				</div>
+			{% endfor %}
+			</div>
+	</div>
 </ul>
 {% else %}
 <p>
-	No books are available.
+	No hi ha cap llibre disponible.
 </p>
 {% endif %} {% endblock %}
+
+

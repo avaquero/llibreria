@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+
+{% block  title %} Nou Prestec - BookShare {% endblock %}
+{% block content %} 
+		<div>
+			<form action="" method="post">{% csrf_token %}
+			{{ form.as_p }}
+			<br>
+			<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-floppy-disk"></span>  Desa</button>
+			</form>
+		</div>
+{% endblock %}

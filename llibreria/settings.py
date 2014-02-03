@@ -58,8 +58,13 @@ WSGI_APPLICATION = 'llibreria.wsgi.application'
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     
-    'django.core.context_processors.request',
-    'django.contrib.auth.context_processors.auth,'
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
     #social auth
     'social.apps.django_app.context_processors.backends',
     'social.apps.django_app.context_processors.login_redirect',
@@ -70,6 +75,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 AUTHENTICATION_BACKENDS = (
     'social.backends.facebook.FacebookOAuth2',
     'social.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend', 
 )
 
 # Database
@@ -120,3 +126,12 @@ TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'TEMPLATES'),]
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "fitxers_estatics"),
 )
+
+
+##Defineixo on van les imatges del titols
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+#Login i logout
+LOGIN_URL = '/usuaris/login'
+LOGOUT_URL = 'usuaris/logout'
