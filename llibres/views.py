@@ -6,6 +6,7 @@ from llibres.models import Titol, Genere, Llibre
 from django.http.response import HttpResponseRedirect
 from llibres.forms import FormGenere, FormLlibre, FormTitol
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -25,6 +26,7 @@ def fitxaTitol(request, idTitol):
     context = {'llibre': llibre}
     return render(request, 'fitxaTitol.html', context)
 
+@login_required
 def entradaLlibre(request, idLlibre =  None):
     #Si idLlibre es None creem un nou llibre, sinó l'editem
     if idLlibre is not None:
