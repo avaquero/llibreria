@@ -30,7 +30,8 @@ def entrada(request):
                     #Fem login
                     login(request, user)
                     messages.success(request, 'Login correcte')
-                    return HttpResponseRedirect('/')
+                    next = request.GET.get('next','/')
+                    return HttpResponseRedirect(next)
                     # Redirect to a success page.
                 else:
                     messages.error(request, 'Compte desactivada, contacti amb l\'administrador')
