@@ -97,9 +97,9 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					{% if user.is_authenticated %}
-						<li><a href="{% url 'usuaris:logout' %}">Logout</a></li>
+						<li><a href="{% url 'usuaris:logout' %}"><span class="glyphicon glyphicon-user"></span>   Logout</a></li>
 					{% else %}
-						<li><a href="{% url 'usuaris:login' %}">Login</a></li>
+						<li><a href="{% url 'usuaris:login' %}"><span class="glyphicon glyphicon-user"></span>   Login</a></li>
 					{% endif %}
 				</ul>
 			</div>
