@@ -12,11 +12,11 @@
 			{% for llibre in llibres %}
 				<div class="col-md-4 col-sm-offset-1 jumbotron" style="font-size:15px">
 					<a href="{% url 'llibres:fitxaLlibre' llibre.id %}">{{ llibre.titol }}</a>
-					{% if llibre.titol.imatge %}
-						<img height="360px" width="200px" class="img-responsive" src="{{ MEDIA_URL }}{{ llibre.imatge }}">
+					{% if llibre.imatge %}
+						<img height="360px" width="300px" class="img-responsive" src="{{ MEDIA_URL }}{{ llibre.imatge }}">
 					{% else %}
 						<img height="360px" width="200px" class="img-responsive" src={%static "imatges/no.png" %}>
-					{% endif %}	
+					{% endif %}
 				</div>
 			{% endfor %}
 			</div>
