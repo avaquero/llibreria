@@ -4,7 +4,7 @@
 {% block  title %} Nou Llibre - BookShare {% endblock %}
 {% block content %} 
 <h1>Afegir noves dades</h1>
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
 	{% csrf_token %}
 	{{ form.as_p }}
 	<input class="btn btn-default" type="submit" value="Submit" />
