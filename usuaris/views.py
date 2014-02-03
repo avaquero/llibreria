@@ -45,7 +45,17 @@ def entrada(request):
         #Si no es pots es GET i vol dir que no tenim dades a processar
     else:
         form = formulariLogin() 
+        
 
+    #Afegir la clase de bootstrap als camps
+    camps_bootestrapejar =( 'usuari', 'contrasenya')
+    for c in camps_bootestrapejar:
+        form.fields[c].widget.attrs['class'] = 'form-control'
+    form.fields['usuari'].widget.attrs['placeholder'] = 'Usuari'
+    form.fields['contrasenya'].widget.attrs['placeholder'] = 'Contrasenya'
+    
+    
+    
     return render(request, 'login.html', {
         'form': form,
     })

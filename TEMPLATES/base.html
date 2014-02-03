@@ -9,14 +9,13 @@
 		<meta http-equiv="Pragma" content="no-cache">
 		<meta http-equiv="Expires" content="0">
 		<style>
-			{% block estil %} 
+			{% block estil %}
 			body {
 				background-color: #717171;
 				text-align: center;
 				font-family: Arial, Helvetica, sans-serif;
 				padding-top: 70px;
 				padding-bottom: 70px;
-
 			}
 			h1 {
 				color: #FF9900;
@@ -24,7 +23,7 @@
 			}
 
 			footer {
-				
+
 				background-color: #4D4D4D;
 				border-radius: 15px;
 				text-align: right;
@@ -38,7 +37,7 @@
 		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 			{% block barra %}
 
-			<a class="navbar-brand" href="{% url 'home' %}"><span class="glyphicon glyphicon-home"></span>  Home</a>
+			<a class="navbar-brand" href="{% url 'home' %}"><span class="glyphicon glyphicon-home"></span> Home</a>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
@@ -66,9 +65,9 @@
 							<li>
 								<a href="{% url 'llibres:llistatTitols' %}">Llistat de titols</a>
 							</li>
-							
+
 							<li class="divider"></li>
-							
+
 						</ul>
 					</li>
 					<li class="dropdown">
@@ -93,14 +92,29 @@
 							</li>
 						</ul>
 					</li>
-					
+
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					{% if user.is_authenticated %}
-						<li><a href="{% url 'usuaris:logout' %}">Logout</a></li>
+					
+						
+					<li>
+						<a href="#">
+							<span class="glyphicon glyphicon-user"></span>
+						Hola, {{user.username}}
+						</a>
+						</li>
+					<li>
+						
+						<a href="{% url 'usuaris:logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+					</li>
 					{% else %}
-						<li><a href="{% url 'usuaris:login' %}">Login</a></li>
+					<li>
+						
+						<a href="{% url 'usuaris:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+					</li>
 					{% endif %}
+					
 				</ul>
 			</div>
 			{% endblock %}
@@ -122,14 +136,17 @@
 		{% block content %}
 		patata
 		{% endblock %}
-		
+
 		{% block peu %}
 		<footer class="navbar-fixed-bottom">
 			Col·laboradors:
-				<a href="http://www.dinahosting.com"><img src={%static "imatges/dinahosting.png" %} height="35" width="110"/></a>
-				<a href="http://www.websalpunt.cat"><img src={%static "imatges/puntcat.png" %} height="60" width="60"></a>
-			</footer>
+
+			<a href="http://www.dinahosting.com"><img src={%static "imatges/dinahosting.png" %} height="35" width="110"/></a>
+			<a href="http://zwww.websalpunt.cat"><img src={%static "imatges/puntcat.png" %} height="60" width="60"></a>
+		</footer>
 		{% endblock %}
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		
 		<script src="{% static 'bootstrap/js/jquery.js' %}"></script>
 		<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
