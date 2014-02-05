@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block  title %} Solicituds - BookShare {% endblock %}
+{% block content %} 
+<h1>Aquestes són les solicituds que hi ha</h1>
+{% if solicituds %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<ul class="list-group">
+					{% for solicitud in solicituds %}
+						<li class="list-group-item">
+							<a href="{% url 'solicituds:edita_solicitud' solicitud.id %}">    {{ solicitud.id }} - {{ solicitud.solicitant }}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="col-md-4"></div>
+	</div>
+</div>
+
+{% else %}
+<p>
+	No hi ha solicituds disponibles.
+</p>
+{% endif %} {% endblock %}
