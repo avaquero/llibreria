@@ -15,7 +15,7 @@
 				text-align: center;
 				font-family: Arial, Helvetica, sans-serif;
 				padding-top: 70px;
-				padding-bottom: 70px;
+				padding-bottom: 40%;
 			}
 			h1 {
 				color: #FF9900;
@@ -100,7 +100,7 @@
 					
 						
 					<li>
-						<a href="#">
+						<a href="{% url 'usuaris:llistatUsuaris' %}">
 							<span class="glyphicon glyphicon-user"></span>
 						Hola, {{user.username}}
 						</a>
