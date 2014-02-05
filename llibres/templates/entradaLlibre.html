@@ -4,9 +4,16 @@
 {% block  title %} Nou Llibre - BookShare {% endblock %}
 {% block content %} 
 <h1>Afegir noves dades</h1>
-<form action="" method="post" enctype="multipart/form-data">
+<form action="" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
 	{% csrf_token %}
-	{{ form.as_p }}
-	<input class="btn btn-default" type="submit" value="Submit" />
+	{% for field in form.visible_fields %}
+	<div class="col-md-6 col-md-offset-3">
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+           </div>
+    {% endfor %}
+    <div class="col-md-6 col-md-offset-3">
+		<input class="btn btn-default" type="submit" value="Submit" />
+	</div>
 </form>
 {% endblock %}

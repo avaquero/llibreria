@@ -46,6 +46,10 @@ def entradaLlibre(request, idLlibre =  None):
     #Si no es POST serà GET, mostrem el formulari buit
     else:
         form = FormLlibre(instance = llibre)
+        
+    camps_bootstrap = ('isbn', 'edicio', 'editorial', 'titol', 'propietari', 'estat', 'imatge')
+    for c in camps_bootstrap:
+        form.fields[c].widget.attrs['class'] = 'form-control'
     return render(request, 'entradaLlibre.html', {'form':form,})
 
 def llistatGeneres(request):
