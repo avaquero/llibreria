@@ -21,6 +21,28 @@
 	</div>
 </div>
 
+<ul class="pagination">
+		{% if solicituds.has_previous %}
+			<li><a href="?pagina={{ solicituds.previous_page_number }}">&laquo;</a></li>
+			{% else %}
+				<li class="disabled"><a>&laquo;</a></li>
+        {% endif %}
+
+        	{% for i in solicituds.paginator.page_range %}
+        		{% ifequal i solicituds.number %}
+        			<li class="active"><a href="?pagina={{ i }}">{{ i }}</a></li>
+        		{% else %}
+        			<li><a href="?pagina={{ i }}">{{ i }}</a></li>
+        		{% endifequal %}
+        	{% endfor %}
+
+        {% if solicituds.has_next %}
+        	<li><a href="?pagina={{ solicituds.next_page_number }}">&raquo;</a></li>
+        	{% else %}
+				<li class="disabled"><a>&raquo;</a></li>
+        {% endif %}
+</ul>
+
 {% else %}
 <p>
 	No hi ha solicituds disponibles.
