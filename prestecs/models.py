@@ -14,6 +14,6 @@ class Prestec(models.Model):
     
 
 class Solicitut_Prestec(models.Model):
-    dataSolicitut = models.DateTimeField()
+    dataSolicitut = models.DateTimeField(default=timezone.now)
     solicitant = models.ForeignKey(Perfil, related_name='solicitant_set')
     titol = models.OneToOneField(Titol)
