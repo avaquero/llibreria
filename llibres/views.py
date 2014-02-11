@@ -57,6 +57,7 @@ def llistatGeneres(request):
     context = {'generes':generes}
     return render(request, 'generes.html', context)
 
+@login_required
 def entradaGeneres(request, idGenere = None):
     #Si idGenere es None creem un nou genere, sinó editem
     if idGenere is not None:
@@ -86,7 +87,7 @@ def llistatTitolsDeGenere(request, idGenere):
     context = {'titols':titols, 'genere':genere}
     
     return render(request, 'llistaTitolsGenere.html', context)
-    
+@login_required
 def entradaTitols(request, idTitol = None):
     #Si idGenere es None creem un nou genere, sinó editem
     if idTitol is not None:
