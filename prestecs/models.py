@@ -6,11 +6,11 @@ from django.utils import timezone
 
 
 class Prestec(models.Model):
-    dataPrestec = models.DateField(default=timezone.now)
+    dataPrestec = models.DateTimeField(default=timezone.now)
     beneficiari = models.ForeignKey(Perfil, related_name='prectecBeneficiari_set')
     prestamista = models.ForeignKey(Perfil, related_name='prestecPrestamista_set')
     llibre = models.OneToOneField(Llibre)
-    dataTornada = models.DateTimeField(null =  True)
+    dataTornada = models.DateTimeField(null=True)
     
 
 class Solicitut_Prestec(models.Model):
