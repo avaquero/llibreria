@@ -1,7 +1,8 @@
 from django.shortcuts import render
-
+from llibres.models import  Titol
 # Create your views here.
 
 def home(request):
-    
-    return render(request, 'home.html')
+    titols = Titol.objects.all()
+    context = {'titols': titols}
+    return render(request, 'home.html', context)

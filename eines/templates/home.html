@@ -1,19 +1,24 @@
 {% extends "base.html" %}
 
-
 {% block  title %} Home - BookShare {% endblock %}
 
-{% block content %} 
-<div>
-			<header>
-				<h1>Benvinguts a Book Share</h1>
-			</header>
-			<div>
-				<h2>Aquesta pàgina es la pàgina principal</h2>
+{% block content %}
+<div class="container">
+	<header>
+		<h1>Benvinguts a Book Share</h1>
+	</header>
+	<div class="col-md-12">
+		{% if titols %}
+			<h2>Disposem d'aquests titols.</h2>
+			<ul class="list-group col-md-8 col-sm-offset-2 ">
+			{% for titol in titols %}
 				
-			</div>
+					<li class="list-group-item"><a href="{% url 'llibres:fitxaTitol' titol.id %}">{{ titol.titol }}</a></li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+	</div>
 
-			
-		</div>
+</div>
 
- {% endblock %}
+{% endblock %}

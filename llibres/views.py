@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 
 
 def index(request):
-    llibres = Titol.objects.all()
+    llibres = Llibre.objects.all()
     context = {'llibres': llibres}
     return render(request, 'index.html', context)
 
@@ -35,8 +35,7 @@ def entradaLlibre(request, idLlibre =  None):
         llibre = Llibre()
     #Si el metode es POST tractem les dades
     if request.method == 'POST':
-        form = FormLlibre(request.POST, instance = llibre)
-        
+        form = FormLlibre(request.POST, request.FILES, instance = llibre)
     #Si les dades son correctres, les procressem i redirigim a la llista de llibres
         if form.is_valid():
             form.save()
@@ -47,6 +46,10 @@ def entradaLlibre(request, idLlibre =  None):
     #Si no es POST serà GET, mostrem el formulari buit
     else:
         form = FormLlibre(instance = llibre)
+        
+    camps_bootstrap = ('isbn', 'edicio', 'editorial', 'titol', 'propietari', 'estat', 'imatge')
+    for c in camps_bootstrap:
+        form.fields[c].widget.attrs['class'] = 'form-control'
     return render(request, 'entradaLlibre.html', {'form':form,})
 
 def llistatGeneres(request):
@@ -54,6 +57,7 @@ def llistatGeneres(request):
     context = {'generes':generes}
     return render(request, 'generes.html', context)
 
+@login_required
 def entradaGeneres(request, idGenere = None):
     #Si idGenere es None creem un nou genere, sinó editem
     if idGenere is not None:
@@ -83,7 +87,7 @@ def llistatTitolsDeGenere(request, idGenere):
     context = {'titols':titols, 'genere':genere}
     
     return render(request, 'llistaTitolsGenere.html', context)
-    
+@login_required
 def entradaTitols(request, idTitol = None):
     #Si idGenere es None creem un nou genere, sinó editem
     if idTitol is not None:
@@ -92,7 +96,7 @@ def entradaTitols(request, idTitol = None):
         titol = Titol()
     #Si el metode es POST tractem les dades
     if request.method == 'POST':
-        form = FormTitol(request.POST, request.FILES, instance = titol)
+        form = FormTitol(request.POST, instance = titol)
         #Si les dades son correctes, les processem i redirigim a la llista de generes
         if form.is_valid():
             form.save()

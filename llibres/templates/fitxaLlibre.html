@@ -26,8 +26,8 @@
 				</div>
 			</div>
 			<div class="col-md-6">
-				{% if llibre.titol.imatge %}
-					<img height="360px" width="300px" class="img-responsive" src="{{ MEDIA_URL }}{{ llibre.titol.imatge }}">
+				{% if llibre.imatge %}
+					<img height="360px" width="300px" class="img-responsive" src="{{ MEDIA_URL }}{{ llibre.imatge }}">
 				{% else %}
 					<img height="360px" width="300px" class="img-responsive" src={%static "imatges/no.png" %}>
 				{% endif %}

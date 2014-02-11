@@ -5,8 +5,9 @@ from usuaris.forms import formulariLogin
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.http.response import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 # Create your views here.
-
+@login_required
 def llistatUsuaris(request):
     usuaris = Perfil.objects.all()
     context = {'usuaris':usuaris}
@@ -45,7 +46,17 @@ def entrada(request):
         #Si no es pots es GET i vol dir que no tenim dades a processar
     else:
         form = formulariLogin() 
+        
 
+    #Afegir la clase de bootstrap als camps
+    camps_bootestrapejar =( 'usuari', 'contrasenya')
+    for c in camps_bootestrapejar:
+        form.fields[c].widget.attrs['class'] = 'form-control'
+    form.fields['usuari'].widget.attrs['placeholder'] = 'Usuari'
+    form.fields['contrasenya'].widget.attrs['placeholder'] = 'Contrasenya'
+    
+    
+    
     return render(request, 'login.html', {
         'form': form,
     })
