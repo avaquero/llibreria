@@ -116,9 +116,9 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '' #afegir el secret enviat privadament!
 #SOCIAL_AUTH_FACEBOOK_SECRET = '' afegir el secret enviat previament!
 
 #URLS SOCIAL AUTH
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/logged-in/'
-SOCIAL_AUTH_LOGIN_ERROR_URL = '/login-error/'
-SOCIAL_AUTH_LOGIN_URL = '/login-url/'
+#SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/logged-in/'
+#SOCIAL_AUTH_LOGIN_ERROR_URL = '/login-error/'
+#SOCIAL_AUTH_LOGIN_URL = '/login-url/'
 
 STATIC_URL = '/static/'
 #Templates
