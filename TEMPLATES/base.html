@@ -15,19 +15,21 @@
 				text-align: center;
 				font-family: Arial, Helvetica, sans-serif;
 				padding-top: 70px;
-				padding-bottom: 40%;
 			}
+
 			h1 {
 				color: #FF9900;
 				margin-bottom: 50px;
 			}
+			.footer {
+				margin-top: 10px;
+ 				position: relative;
+  				clear:both;
+  				background-color: #4D4D4D;
+  				border-radius: 15px;
+  				text-align: right;
+			} 
 
-			footer {
-				
-				background-color: #4D4D4D;
-				border-radius: 15px;
-				text-align: right;
-			}
 			{% endblock %}
 		</style>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -135,7 +137,7 @@
 		{% endblock %}
 
 		{% block peu %}
-		<footer class="navbar-fixed-bottom">
+		<footer class="footer">
 			Col·laboradors:
 
 			<a href="http://www.dinahosting.com"><img src={%static "imatges/dinahosting.png" %} height="35" width="110"/></a>
