@@ -70,6 +70,10 @@ def nouPrestec(request, idPrestec =  None):
     #Si no es POST serà GET, mostrem el formulari buit
     else:
         form = FormPrestec(instance = prestec)
+        
+    camps_bootstrap = ('dataPrestec','beneficiari', 'prestamista', 'llibre')
+    for c in camps_bootstrap:
+        form.fields[c].widget.attrs['class'] = 'form-control'
     return render(request, 'entrarPrestec.html', {'form':form,})
 
 @login_required

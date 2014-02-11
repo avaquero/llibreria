@@ -4,12 +4,17 @@
 {% block  title %} Nou Prestec - BookShare {% endblock %}
 {% block content %} 
 		<h1> Entrar/Editar Prestec</h1>
-		<div>
-			<form action="" method="post">{% csrf_token %}
-			{{ form.as_p }}
-			<br>
-			<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-floppy-disk"></span>  Desa</button>
-			<a class="btn btn-default" href="{% url 'prestecs:llistatPrestecs' %}"><span class="glyphicon glyphicon-remove"></span>  Surt</a>
+			<form action="" method="post"enctype="multipart/form-data" class="form-horizontal" role="form">
+			{% csrf_token %}
+			{% for field in form.visible_fields %}
+				<div class="col-md-6 col-md-offset-3">
+            		{{ field.errors }}
+            		{{ field.label_tag }} {{ field }}
+           		</div>
+    		{% endfor %}
+			<div class="col-md-6 col-md-offset-3">
+				<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-floppy-disk"></span>  Desa</button>
+				<a class="btn btn-default" href="{% url 'prestecs:llistatPrestecs' %}"><span class="glyphicon glyphicon-remove"></span>  Surt</a>
+			</div>
 			</form>
-		</div>
 {% endblock %}
