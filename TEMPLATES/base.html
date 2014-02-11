@@ -23,12 +23,12 @@
 			}
 			.footer {
 				margin-top: 10px;
- 				position: relative;
-  				clear:both;
-  				background-color: #4D4D4D;
-  				border-radius: 15px;
-  				text-align: right;
-			} 
+				position: relative;
+				clear: both;
+				background-color: #4D4D4D;
+				border-radius: 15px;
+				text-align: right;
+			}
 			{% endblock %}
 		</style>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,9 +40,15 @@
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
 			<a class="navbar-brand" href="{% url 'home' %}"><span class="glyphicon glyphicon-home"></span> Home</a>
-
+		
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
+					
+					<li>
+						<a href="{% url 'quisom' %}">Qui som?</a>
+					</li>
+					
+					
 					<!--<li class="active">-->
 					<li class="dropdown">
 
@@ -91,92 +97,70 @@
 							</li>
 						</ul>
 					</li>
-					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<a href="{% url 'usuaris:llistatUsuaris' %}"> <span class="glyphicon glyphicon-user"></span> Hola, {{user.username}} </a>
-						</li>
-						<li>
-							<a href="{% url 'usuaris:logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
-						</li>
-					</ul>
-				
-				</div>
-				</nav>
-				{% else %}
-				<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+					
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="{% url 'usuaris:llistatUsuaris' %}"> <span class="glyphicon glyphicon-user"></span> Hola, {{user.username}} </a>
+					</li>
+					<li>
+						<a href="{% url 'usuaris:logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+					</li>
+				</ul>
 
-					<a class="navbar-brand" href="{% url 'home' %}"><span class="glyphicon glyphicon-home"></span> Home</a>
+			</div>
+		</nav>
+		{% else %}
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
-					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav">
-							<!--<li class="active">-->
-							<li class="dropdown">
+			<a class="navbar-brand" href="{% url 'home' %}"><span class="glyphicon glyphicon-home"></span> Home</a>
 
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-book"></span> Llibres <b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li>
-										<a href="{% url 'llibres:index' %}">Llistat de llibres</a>
-									</li>
-									<li class="divider"></li>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					
+					<li>
+						<a href="{% url 'quisom' %}">Qui som?</a>
+					</li>
+					<!--<li class="active">-->
+					<li class="dropdown">
 
-									<li>
-										<a href="{% url 'llibres:llistatGeneres' %}">Llistat de generes</a>
-									</li>
-									<li class="divider"></li>
-
-									<li>
-										<a href="{% url 'llibres:llistatTitols' %}">Llistat de titols</a>
-									</li>
-
-									<li class="divider"></li>
-
-								</ul>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-book"></span> Llibres <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="{% url 'llibres:index' %}">Llistat de llibres</a>
 							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Prestecs <b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li>
-										<a href="{% url 'prestecs:llistatPrestecs' %}">Llistat de Prestecs</a>
-									</li>
-
-									<li class="divider"></li>
-									<li>
-										<a href="{% url 'solicituds:llistatSolicituds' %}">Llistat de Solicituds</a>
-									</li>
-
-								</ul>
-							</li>
-
-						</ul>
-
-						<ul class="nav navbar-nav navbar-right">
+							<li class="divider"></li>
 
 							<li>
-								<a href="{% url 'usuaris:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+								<a href="{% url 'llibres:llistatGeneres' %}">Llistat de generes</a>
+							</li>
+							<li class="divider"></li>
+
+							<li>
+								<a href="{% url 'llibres:llistatTitols' %}">Llistat de titols</a>
 							</li>
 
+							<li class="divider"></li>
+
 						</ul>
-					</div>
+					</li>
+					
+					
 
-				</nav>
-				{% endif %}
-				{% endblock %}
-				{% if messages %}
-
-				{% load eines_extras %}
-				<ul class="messages">
-					{% for message in messages %}
-					{% get_twitter_bootstrap_alert_msg_css_name message.tags as alert_tag %}
-					<p class="alert alert-{{ alert_tag }}">
-						{{ message }}
-					</p>
-					{% endfor %}
 				</ul>
-<<<<<<< HEAD
+
+				<ul class="nav navbar-nav navbar-right">
+
+					<li>
+						<a href="{% url 'usuaris:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+					</li>
+
+				</ul>
 			</div>
-			{% endblock %}
+
 		</nav>
+		{% endif %}
+		{% endblock %}
 
 		{% if messages %}
 
@@ -194,7 +178,9 @@
 		{% block content %}
 		patata
 		{% endblock %}
-		<br/><br/><br/>
+		<br/>
+		<br/>
+		<br/>
 		<footer class="navbar navbar-default navbar-fixed-bottom">
 			Col·laboradors:
 
@@ -203,30 +189,9 @@
 		</footer>
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		
+
 		<script src="{% static 'bootstrap/js/jquery.js' %}"></script>
 		<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-=======
-				{% endif %}
-
-				{% block content %}
-				patata
-				{% endblock %}
-
-				{% block peu %}
-				<footer class="navbar-fixed-bottom">
-					Col·laboradors:
-
-					<a href="http://www.dinahosting.com"><img src={%static "imatges/dinahosting.png" %} height="35" width="110"/></a>
-					<a href="http://zwww.websalpunt.cat"><img src={%static "imatges/puntcat.png" %} height="60" width="60"></a>
-				</footer>
-				{% endblock %}
-
-				<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-
-				<script src="{% static 'bootstrap/js/jquery.js' %}"></script>
-				<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
->>>>>>> ccfcad8132d5f8a7f80c4519952a0d11348cb28d
 
 	</body>
 </html>
