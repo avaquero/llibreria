@@ -3,14 +3,14 @@ from llibres.models import Genere, Titol, Llibre
 # Register your models here.
 
 class GenereAdmin(admin.ModelAdmin):
-    pass
+    fields = ('nom',)
 
 admin.site.register(Genere, GenereAdmin)
 
 class TitolAdmin(admin.ModelAdmin):
-    pass
+    fields = ('titol','sinopsis','genere','idioma')
 admin.site.register(Titol, TitolAdmin)
 
 class LlibreAdmin(admin.ModelAdmin):
-    pass
+    fields = ('isbn','edicio','editorial','titol','propietari','estat','imatge')
 admin.site.register(Llibre, LlibreAdmin)
