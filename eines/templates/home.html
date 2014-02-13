@@ -9,13 +9,12 @@
 	</header>
 	<div class="col-md-12">
 		{% if titols %}
+		<div class="list-group col-md-8 col-sm-offset-2 ">
 			<h2>Disposem d'aquests titols.</h2>
-			<ul class="list-group col-md-8 col-sm-offset-2 ">
 			{% for titol in titols %}
-				
-					<li class="list-group-item"><a href="{% url 'llibres:fitxaTitol' titol.id %}">{{ titol.titol }}</a></li>
+					<a class="list-group-item" href="{% url 'llibres:fitxaTitol' titol.id %}">{{ titol.titol }}</a>
 			{% endfor %}
-			</ul>
+			</div>
 		{% endif %}
 	</div>
 
