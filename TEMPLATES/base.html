@@ -16,9 +16,7 @@
 				margin-right: 5px;
 			}
 			
-			body {
-				padding-bottom: 70px !important;
-			}
+
 			#formEntradaLlibres {
 				margin-left: 10px;
 			}
@@ -32,6 +30,7 @@
 				text-align: center;
 				font-family: Arial, Helvetica, sans-serif;
 				padding-top: 70px;
+				padding-bottom: 70px !important;
 			}
 			h3 {
 				color: #FF9900;
@@ -93,8 +92,7 @@
 							<li class="divider"></li>
 						</ul>
 					</li>
-					<li class="dropdown">
-						
+					<li class="dropdown">		
 						<a href="#" id="prestec" class="dropdown-toggle" data-toggle="dropdown"><span><img id="iconaPrestec" src="{% static "imatges/glyphicons_308_share_alt.png" %}"></span>Prestecs <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li>
@@ -111,10 +109,13 @@
 								<a href="{% url 'solicituds:novaSolicitud' %}">Nova Solicitud</a>
 							</li>
 						</ul>
-					</li>
-
+					</li>	
 				</ul>
-
+				
+				<ul class="nav navbar-nav"> 
+					<li><a href="{% url 'xat' %}"> Xat</a></li>
+				</ul>
+				
 				<ul class="nav navbar-nav navbar-right">
 					<li>
 						<a href="{% url 'usuaris:llistatUsuaris' %}"> <span class="glyphicon glyphicon-user"></span> Hola, {{user.username}} </a>
@@ -190,21 +191,23 @@
 		{% block content %}
 		patata
 		{% endblock %}
-
-		<footer class="navbar navbar-inverse navbar-fixed-bottom col-md-12">
-			<ul class="nav navbar-nav navbar-left col-md-offset-1 col-md-3 botons">
-
-				<li>
-					<a  data-toggle="modal" data-target="#quisom">Qui som?</a>
-				</li>
-				<li>
-					<a  data-toggle="modal" data-target="#condicions">Avís Legal i Condicions d'ús</a>
-				</li>
-			</ul>
-
+		
+		<footer class="navbar navbar-inverse navbar-fixed-bottom col-md-12 hidden-xs visible-sm visible-md visible-lg">
 			<a  class="navbar-text navbar-right logos" href="http://www.websalpunt.cat"><img class="img-responsive"  src={%static "imatges/puntcat.png" %}></a>
 			<a id="dinahosting" class="navbar-text navbar-right logos" href="http://www.dinahosting.com"><img class="img-responsive"  src={%static "imatges/dinahosting.png" %}/></a>
-
+			<ul class="nav navbar-nav navbar-left col-md-offset-1 col-md-3 botons">
+				<li> <a  data-toggle="modal" data-target="#quisom">Qui som?</a>  </li>
+				<li> <a  data-toggle="modal" data-target="#condicions">Avís Legal i Condicions d'ús</a>	</li>
+			</ul>
+		</footer>
+		
+		<footer class="navbar navbar-inverse navbar-fixed-bottom col-md-12 visible-xs hidden-sm hidden-md hidden-lg">
+			<a  class="navbar-text navbar-right logos" href="http://www.websalpunt.cat"><img  src={%static "imatges/puntcat.png" %}></a>
+			<a id="dinahosting" class="navbar-text navbar-right logos" href="http://www.dinahosting.com"><img  height="20px" src={%static "imatges/dinahosting.png" %}/></a>
+			<ul class="nav navbar-nav navbar-left col-md-offset-1 col-md-3 botons">
+				<a  data-toggle="modal" data-target="#quisom">Qui som? ||</a>  
+				<a  data-toggle="modal" data-target="#condicions">Avís Legal i Condicions d'ús</a>
+			</ul>
 		</footer>
 		<!--Modal qui som-->
 		<div class="modal fade" id="quisom" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

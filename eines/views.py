@@ -7,6 +7,6 @@ def home(request):
     context = {'titols': titols}
     return render(request, 'home.html', context)
 
-def quiSom(request):
-    return render(request, 'quiSom.html')
 
+def xat(request):
+    return render(request, 'xat.html')
