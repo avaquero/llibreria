@@ -22,12 +22,11 @@ def llistatPrestecs(request):
     #context = {'solicituds':solicituds}
     #return render(request, 'solicituds.html', context)
 
-
 @login_required
 def llistatSolicituds(request):
     solicitud = Solicitut_Prestec.objects.all()
     paginator = Paginator(solicitud, 2) #Quantes solicituds volem mostrar
-    page = request.GET.get('pagina')
+    page = request.GET.get('pagina') #('pagina') és el que s'assignara al get
     try:
         solicituds = paginator.page(page)
     except PageNotAnInteger:
@@ -53,14 +52,28 @@ def nouPrestec(request, idPrestec =  None):
         form = FormPrestec(request.POST, instance = prestec)
     #Si les dades son correctres, les procressem i redirigim a la llista de prestecs
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Prestec introduit correctament')
-            return HttpResponseRedirect('/prestecs')
+            prestamista = form.cleaned_data['prestamista']
+            beneficiari = form.cleaned_data['beneficiari']
+            llibre = form.cleaned_data['llibre']
+                 
+            if prestamista != beneficiari:
+                if llibre.estat == "disponible":
+                    form.save()
+                    messages.success(request, 'Prestec introduit correctament')
+                    return HttpResponseRedirect('/prestecs')
+                else:
+                   messages.error(request,'El llibre no esta disponible') 
+            else:
+                messages.error(request,'El beneficiari i el prestamista no poden ser el mateix')
         else:
             messages.error(request, "Ep! Hi ha hagut un error al introduir un prestec")
     #Si no es POST serà GET, mostrem el formulari buit
     else:
         form = FormPrestec(instance = prestec)
+        
+    camps_bootstrap = ('dataPrestec','beneficiari', 'prestamista', 'llibre')
+    for c in camps_bootstrap:
+        form.fields[c].widget.attrs['class'] = 'form-control'
     return render(request, 'entrarPrestec.html', {'form':form,})
 
 @login_required

@@ -18,7 +18,6 @@ class Titol(models.Model):
     titol = models.CharField(max_length=200, unique = True, help_text = "Titol del llibre")
     sinopsis = models.CharField(max_length=500)
     genere = models.ForeignKey(Genere)
-    ###Books es la carpeta es crearà dins de media_root.
     idioma = models.CharField(max_length=200)
 
     def __unicode__(self):
@@ -31,6 +30,7 @@ class Llibre(models.Model):
     titol = models.ForeignKey(Titol)
     propietari = models.ForeignKey(Perfil)
     estat = models.CharField(max_length=20, choices=ESTATS_LLIBRES_CHOICES)
+    ###Books es la carpeta es crearà dins de media_root.
     imatge = models.FileField(upload_to="books", blank=True)
 
     def __unicode__(self):
