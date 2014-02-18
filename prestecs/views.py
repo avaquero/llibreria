@@ -1,6 +1,8 @@
 # -*- encoding: utf-8 -*-
 from django.shortcuts import render, get_object_or_404
 from prestecs.models import Prestec, Solicitut_Prestec
+from llibres.models import Llibre
+from usuaris.models import Perfil
 from prestecs.forms import FormPrestec, FormSolicitutPrestec
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
@@ -8,6 +10,9 @@ from django.http.response import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.context_processors import request
+import datetime
+from django.contrib.auth.models import User
 
 @login_required
 def llistatPrestecs(request):
@@ -97,3 +102,24 @@ def solicitudPrestec(request, idSolicitud =  None):
     else:
         form = FormSolicitutPrestec(instance = solicitud)
     return render(request, 'solicitudPrestec.html', {'form':form,})
+
+@login_required
+def novaSolicitut (request, idLlibre):
+    llibre = Llibre.objects.get( id = idLlibre )
+    solicitant = get_object_or_404(Perfil, pk = request.user.id)
+    solicitut = Solicitut_Prestec();
+    
+    if llibre.estat == "disponible":
+        solicitut.dataSolicitut = datetime.datetime.now()
+        solicitut.solicitant = solicitant
+        solicitut.titol = llibre.titol
+        solicitut.save()
+        llibre.estat = "pendent"
+        llibre.save()
+        messages.success(request, 'Solicitut enviada correctament')
+        return HttpResponseRedirect('/')
+    else:
+        messages.error(request,'El llibre no esta disponible')
+        return HttpResponseRedirect('/llibres')
+        
+    
