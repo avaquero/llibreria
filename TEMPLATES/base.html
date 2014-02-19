@@ -46,6 +46,22 @@
 			.botons {
 				padding: 0px !important;
 			}
+			.video-container {     
+				position: relative;     
+				padding-bottom: 50%;     
+				padding-top: 10px; 
+				height: 0; 
+				overflow: hidden; 
+			}   
+				
+			.video-container iframe, .video-container object, .video-container embed {     
+				position: absolute;     
+				top: 0;     
+				left: 0;     
+				width: 100%;     
+				height: 80%; 
+			}
+			
 			{% endblock %}
 		</style>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -114,6 +130,14 @@
 				
 				<ul class="nav navbar-nav"> 
 					<li><a href="{% url 'xat' %}"> Xat</a></li>
+				</ul>
+				
+				<ul class="nav navbar-nav">
+				<form action="" method="post">
+					{% csrf_token %}
+					{{ form.as_p }}
+					<button type="submit" class="btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+				</form>
 				</ul>
 				
 				<ul class="nav navbar-nav navbar-right">
