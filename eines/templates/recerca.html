@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block  title %} Recerca {% endblock %}
+{% block content %} 
+{% if llibres %}
+					{% for llibre in llibres %}
+						{{ llibre }}
+					{% endfor %}
+{% else %}
+<p>
+	No hi ha prestecs disponibles.
+</p>
+{% endif %} {% endblock %}

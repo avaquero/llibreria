@@ -45,6 +45,22 @@
 			.botons {
 				padding: 0px !important;
 			}
+			.video-container {
+				position: relative;
+				padding-bottom: 50%;
+				padding-top: 10px;
+				height: 0;
+				overflow: hidden;
+			}
+
+			.video-container iframe, .video-container object, .video-container embed {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 80%;
+			}
+
 			{% endblock %}
 		</style>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -116,11 +132,24 @@
 						<a href="{% url 'xat' %}">Xat</a>
 					</li>
 				</ul>
+				{% if alerta_peticions_flag %}
 				<ul class="nav navbar-nav">
 					<li >
-						<a  class="navbar-text" href="#"><span class="glyphicon glyphicon-envelope"></span>{{alerta_peticions_flag}}</a>
+						<a   href="#"><span class="glyphicon glyphicon-envelope"></span>{{alerta_peticions_flag}}</a>
 					</li>
 				</ul>
+				{% endif %}
+
+				<ul class="nav navbar-nav">
+					<form action="" method="post">
+						{% csrf_token %}
+						{{ form.as_p }}
+						<button type="submit" class="btn-primary">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</form>
+				</ul>
+
 				<ul class="nav navbar-nav navbar-right">
 					<li>
 						<a href="{% url 'usuaris:llistatUsuaris' %}"> <span class="glyphicon glyphicon-user"></span> Hola, {{user.username}} </a>
@@ -167,10 +196,19 @@
 						</ul>
 					</li>
 				</ul>
-				<ul class="nav navbar-nav navbar-text">
+				<ul class="nav navbar-nav">
 					<li class="">
 						<a href="#"><span class="glyphicon glyphicon-envelope"></span>{{alerta_peticions_flag}}</a>
 					</li>
+				</ul>
+				<ul class="nav navbar-nav">
+					<form action="" method="post">
+						{% csrf_token %}
+						{{ form.as_p }}
+						<button type="submit" class="btn-primary">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</form>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -223,7 +261,7 @@
 				<a  data-toggle="modal" data-target="#condicions">Avís Legal i Condicions d'ús</a>
 			</ul>
 		</footer>
-		
+
 		<!--Modal missatges-->
 		<div class="modal fade" id="missatges" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -252,10 +290,7 @@
 				</div>
 			</div>
 		</div>
-		
-		
-		
-		
+
 		<!--Modal qui som-->
 		<div class="modal fade" id="quisom" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
