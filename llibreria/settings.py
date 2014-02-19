@@ -72,6 +72,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'social.apps.django_app.context_processors.backends',
     'social.apps.django_app.context_processors.login_redirect',
     'eines.context_processors.alerta_peticions',
+    'eines.context_processors.formulariCerca',
     
 )
 

@@ -28,6 +28,5 @@ def recerca(request):
         form = BuscaForm()   
         buscat = request.GET.get("q", '')
         llibres = Titol.objects.filter(titol__contains= buscat)
-        print form, 'pppppp'   
-    return render(request, 'recerca.html', { 'form': form, 'llibres':llibres })
+    return render(request, 'recerca.html', { 'formCerca': form, 'llibres':llibres })
 
