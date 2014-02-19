@@ -1,15 +1,17 @@
 {% extends "base.html" %}
 
-
 {% block  title %} Nova Solicitud - BookShare {% endblock %}
-{% block content %} 
-		<h1> Entrar/Editar Solicituds</h1>
-		<div>
-			<form action="" method="post">{% csrf_token %}
-			{{ form.as_p }}
-			<br>
-			<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-floppy-disk"></span>  Desa</button>
-			<a class="btn btn-default" href="{% url 'solicituds:llistatSolicituds' %}"><span class="glyphicon glyphicon-remove"></span>  Surt</a>
-			</form>
-		</div>
+{% block content %}
+<h1> Entrar/Editar Solicituds</h1>
+<div>
+	<form action="" method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<br>
+		<button type="submit" class="btn btn-default">
+			<span class="glyphicon glyphicon-floppy-disk"></span> Desa
+		</button>
+		<a class="btn btn-default" href="{% url 'solicituds:llistatSolicituds' %}"><span class="glyphicon glyphicon-remove"></span> Surt</a>
+	</form>
+</div>
 {% endblock %}
