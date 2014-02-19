@@ -10,12 +10,11 @@
 		<meta http-equiv="Expires" content="0">
 		<style>
 			{% block estil %}
-			#iconaPrestec{
+			#iconaPrestec {
 				width: 15px;
 				height: 15px;
 				margin-right: 5px;
 			}
-			
 
 			#formEntradaLlibres {
 				margin-left: 10px;
@@ -92,7 +91,7 @@
 							<li class="divider"></li>
 						</ul>
 					</li>
-					<li class="dropdown">		
+					<li class="dropdown">
 						<a href="#" id="prestec" class="dropdown-toggle" data-toggle="dropdown"><span><img id="iconaPrestec" src="{% static "imatges/glyphicons_308_share_alt.png" %}"></span>Prestecs <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li>
@@ -109,13 +108,19 @@
 								<a href="{% url 'solicituds:novaSolicitud' %}">Nova Solicitud</a>
 							</li>
 						</ul>
-					</li>	
+					</li>
 				</ul>
-				
-				<ul class="nav navbar-nav"> 
-					<li><a href="{% url 'xat' %}"> Xat</a></li>
+
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="{% url 'xat' %}">Xat</a>
+					</li>
 				</ul>
-				
+				<ul class="nav navbar-nav">
+					<li >
+						<a  class="navbar-text" href="#"><span class="glyphicon glyphicon-envelope"></span>{{alerta_peticions_flag}}</a>
+					</li>
+				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li>
 						<a href="{% url 'usuaris:llistatUsuaris' %}"> <span class="glyphicon glyphicon-user"></span> Hola, {{user.username}} </a>
@@ -162,6 +167,11 @@
 						</ul>
 					</li>
 				</ul>
+				<ul class="nav navbar-nav navbar-text">
+					<li class="">
+						<a href="#"><span class="glyphicon glyphicon-envelope"></span>{{alerta_peticions_flag}}</a>
+					</li>
+				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
 					<li>
@@ -191,26 +201,31 @@
 		{% block content %}
 		patata
 		{% endblock %}
-		
+
 		<footer class="navbar navbar-inverse navbar-fixed-bottom col-md-12 hidden-xs visible-sm visible-md visible-lg">
 			<a  class="navbar-text navbar-right logos" href="http://www.websalpunt.cat"><img class="img-responsive"  src={%static "imatges/puntcat.png" %}></a>
 			<a id="dinahosting" class="navbar-text navbar-right logos" href="http://www.dinahosting.com"><img class="img-responsive"  src={%static "imatges/dinahosting.png" %}/></a>
 			<ul class="nav navbar-nav navbar-left col-md-offset-1 col-md-3 botons">
-				<li> <a  data-toggle="modal" data-target="#quisom">Qui som?</a>  </li>
-				<li> <a  data-toggle="modal" data-target="#condicions">Avís Legal i Condicions d'ús</a>	</li>
+				<li>
+					<a  data-toggle="modal" data-target="#quisom">Qui som?</a>
+				</li>
+				<li>
+					<a  data-toggle="modal" data-target="#condicions">Avís Legal i Condicions d'ús</a>
+				</li>
 			</ul>
 		</footer>
-		
+
 		<footer class="navbar navbar-inverse navbar-fixed-bottom col-md-12 visible-xs hidden-sm hidden-md hidden-lg">
 			<a  class="navbar-text navbar-right logos" href="http://www.websalpunt.cat"><img  src={%static "imatges/puntcat.png" %}></a>
 			<a id="dinahosting" class="navbar-text navbar-right logos" href="http://www.dinahosting.com"><img  height="20px" src={%static "imatges/dinahosting.png" %}/></a>
 			<ul class="nav navbar-nav navbar-left col-md-offset-1 col-md-3 botons">
-				<a  data-toggle="modal" data-target="#quisom">Qui som? ||</a>  
+				<a  data-toggle="modal" data-target="#quisom">Qui som? ||</a>
 				<a  data-toggle="modal" data-target="#condicions">Avís Legal i Condicions d'ús</a>
 			</ul>
 		</footer>
-		<!--Modal qui som-->
-		<div class="modal fade" id="quisom" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		
+		<!--Modal missatges-->
+		<div class="modal fade" id="missatges" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -221,9 +236,11 @@
 					</div>
 					<div class="modal-body">
 						<div class="panel panel-info">
-							<div class="panel-heading"> <h3 class=" panel-title">aaa</h3></div>
+							<div class="panel-heading">
+								<h3 class=" panel-title">aaa</h3>
+							</div>
 							<div class="panel-body">
-								 
+
 							</div>
 						</div>
 					</div>
@@ -236,6 +253,37 @@
 			</div>
 		</div>
 		
+		
+		
+		
+		<!--Modal qui som-->
+		<div class="modal fade" id="quisom" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							&times;
+						</button>
+						<h4 class="modal-title" id="myModalLabel">Qui som?</h4>
+					</div>
+					<div class="modal-body">
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class=" panel-title">aaa</h3>
+							</div>
+							<div class="panel-body">
+
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">
+							Tancar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<!-- Modal -->
 		<div class="modal fade" id="condicions" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -249,12 +297,14 @@
 					</div>
 					<div class="modal-body">
 						<div class="panel panel-info">
-							<div class="panel-heading"> <h3 class=" panel-title">Llicència</h3></div>
+							<div class="panel-heading">
+								<h3 class=" panel-title">Llicència</h3>
+							</div>
 							<div class="panel-body">
 								<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/deed.ca"><img alt="Llicència de Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a>
 								<br />
-								<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Bookshare</span> de <a xmlns:cc="http://creativecommons.org/ns#" href="htttp://www.bookshare.cat" property="cc:attributionName" rel="cc:attributionURL">Enemic a Derrotar Websalpunt 2013</a> està subjecta a una llicència de <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/deed.ca">Reconeixement-NoComercial 4.0 Internacional de Creative Commons</a> 
-								</div>
+								<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Bookshare</span> de <a xmlns:cc="http://creativecommons.org/ns#" href="htttp://www.bookshare.cat" property="cc:attributionName" rel="cc:attributionURL">Enemic a Derrotar Websalpunt 2013</a> està subjecta a una llicència de <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/deed.ca">Reconeixement-NoComercial 4.0 Internacional de Creative Commons</a>
+							</div>
 						</div>
 					</div>
 					<div class="modal-footer">

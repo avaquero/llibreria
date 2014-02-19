@@ -10,3 +10,4 @@ def home(request):
 
 def xat(request):
     return render(request, 'xat.html')
+
