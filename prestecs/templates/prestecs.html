@@ -3,10 +3,9 @@
 {% block  title %} Prestecs - BookShare {% endblock %}
 {% block content %}
 <h1>Aquests són els prestecs que hi ha</h1>
-{% if prestecs %}
+
 <div class="container">
 	<div class="row">
-		<div class="col-md-4"></div>
 		<div class="col-md-4">
 			<ul class="list-group">
 				{% for prestec in prestecs %}
@@ -16,12 +15,17 @@
 				{% endfor %}
 			</ul>
 		</div>
+		<div class="col-md-4">
+			<ul class="list-group">
+				{% for prestec in mhanprestat %}
+				<li class="list-group-item">
+					<a href="{% url 'prestecs:edita_prestec' prestec.id %}"> {{ prestec.id }} - {{ prestec.prestamista }}</a>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
 		<div class="col-md-4"></div>
 	</div>
 </div>
 
-{% else %}
-<p>
-	No hi ha prestecs disponibles.
-</p>
-{% endif %} {% endblock %}
+{% endblock %}
