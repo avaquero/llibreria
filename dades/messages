@@ -1,0 +1,12 @@
+{% if messages %}
+
+		{% load eines_extras %}
+		<ul class="messages">
+			{% for message in messages %}
+			{% get_twitter_bootstrap_alert_msg_css_name message.tags as alert_tag %}
+			<p class="alert alert-{{ alert_tag }}">
+				{{ message }}
+			</p>
+			{% endfor %}
+		</ul>
+		{% endif %}
