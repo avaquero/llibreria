@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block  title %} Recerca {% endblock %}
+{% block content %}
+{% if llibres %}
+<h2>Recerca de llibres</h2>
+<div class="list-group col-md-8 col-sm-offset-2 ">
+{% for llibre in llibres %}
+<a href="{% url 'llibres:fitxaLlibre' llibre.id %}" class="list-group-item">{{ llibre }}</a>
+{% endfor %}
+</div>
+{% else %}
+<div class="list-group col-md-8 col-sm-offset-2 ">
+<p class="list-group-item">
+	No hi ha llibres disponibles amb aquest títol.
+</p>
+</div>
+{% endif %} {% endblock %}

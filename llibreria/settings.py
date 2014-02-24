@@ -28,6 +28,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'llibreria.urls'
 WSGI_APPLICATION = 'llibreria.wsgi.application'
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-    
+    'django.core.context_processors.request',
     "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.debug",
     "django.core.context_processors.i18n",
@@ -68,6 +69,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     #social auth
     'social.apps.django_app.context_processors.backends',
     'social.apps.django_app.context_processors.login_redirect',
+    'eines.context_processors.alerta_peticions',
+    'eines.context_processors.formulariCerca',
     
 )
 

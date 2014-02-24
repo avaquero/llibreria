@@ -4,6 +4,11 @@ from llibres.models import Llibre, Titol
 import datetime
 from django.utils import timezone
 
+ESTAT_PRESTEC_CHOICES = (
+    ('acceptada', 'Acceptada'),
+    ('pendent', 'Pendent'),
+    ('denegada', 'Denegada'),
+)
 
 class Prestec(models.Model):
     dataPrestec = models.DateTimeField(default=timezone.now)
@@ -17,3 +22,6 @@ class Solicitut_Prestec(models.Model):
     dataSolicitut = models.DateTimeField(default=timezone.now)
     solicitant = models.ForeignKey(Perfil, related_name='solicitant_set')
     titol = models.OneToOneField(Titol)
+    estat =  models.CharField(max_length=20, choices=ESTAT_PRESTEC_CHOICES)
+    
+    

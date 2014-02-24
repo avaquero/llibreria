@@ -4,18 +4,18 @@
 	<head>
 		<meta charset="utf-8">
 		<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+		<link href="{% static 'bootstrap/css/mensajes.css' %}" rel="stylesheet">
 		<title>{% block title %} base {% endblock %}</title>
 		<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
 		<meta http-equiv="Pragma" content="no-cache">
 		<meta http-equiv="Expires" content="0">
 		<style>
 			{% block estil %}
-			#iconaPrestec{
+			#iconaPrestec {
 				width: 15px;
 				height: 15px;
 				margin-right: 5px;
 			}
-			
 
 			#formEntradaLlibres {
 				margin-left: 10px;
@@ -46,6 +46,22 @@
 			.botons {
 				padding: 0px !important;
 			}
+			.video-container {
+				position: relative;
+				padding-bottom: 50%;
+				padding-top: 10px;
+				height: 0;
+				overflow: hidden;
+			}
+
+			.video-container iframe, .video-container object, .video-container embed {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 80%;
+			}
+
 			{% endblock %}
 		</style>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -92,7 +108,7 @@
 							<li class="divider"></li>
 						</ul>
 					</li>
-					<li class="dropdown">		
+					<li class="dropdown">
 						<a href="#" id="prestec" class="dropdown-toggle" data-toggle="dropdown"><span><img id="iconaPrestec" src="{% static "imatges/glyphicons_308_share_alt.png" %}"></span>Prestecs <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li>
@@ -109,13 +125,34 @@
 								<a href="{% url 'solicituds:novaSolicitud' %}">Nova Solicitud</a>
 							</li>
 						</ul>
-					</li>	
+					</li>
 				</ul>
-				
-				<ul class="nav navbar-nav"> 
-					<li><a href="{% url 'xat' %}"> Xat</a></li>
+
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="{% url 'xat' %}">Xat</a>
+					</li>
 				</ul>
-				
+				{% if alerta_peticions_flag %}
+				<ul class="nav navbar-nav">
+					<li >
+						<a   href="#"><span class="glyphicon glyphicon-envelope"></span>{{alerta_peticions_flag}}</a>
+					</li>
+				</ul>
+				{% endif %}
+
+				<form class="navbar-form navbar-left" action="{% url 'recerca' %}" method="post" role="search">
+
+					<div class="form-group">
+						{% csrf_token %}
+						{{ formCerca.busca }}
+					</div>
+					<button type="submit" class="btn btn-default">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+
+				</form>
+
 				<ul class="nav navbar-nav navbar-right">
 					<li>
 						<a href="{% url 'usuaris:llistatUsuaris' %}"> <span class="glyphicon glyphicon-user"></span> Hola, {{user.username}} </a>
@@ -162,6 +199,22 @@
 						</ul>
 					</li>
 				</ul>
+				<ul class="nav navbar-nav">
+					<li class="">
+						<a href="#"><span class="glyphicon glyphicon-envelope"></span>{{alerta_peticions_flag}}</a>
+					</li>
+				</ul>
+				<form class="navbar-form navbar-left" action="{% url 'recerca' %}" method="post" role="search">
+
+					<div class="form-group">
+						{% csrf_token %}
+						{{ formCerca.busca }}
+					</div>
+					<button type="submit" class="btn btn-default">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+
+				</form>
 
 				<ul class="nav navbar-nav navbar-right">
 					<li>
@@ -176,40 +229,61 @@
 		{% endif %}
 		{% endblock %}
 
-		{% if messages %}
-
-		{% load eines_extras %}
-		<ul class="messages">
-			{% for message in messages %}
-			{% get_twitter_bootstrap_alert_msg_css_name message.tags as alert_tag %}
-			<p class="alert alert-{{ alert_tag }}">
-				{{ message }}
-			</p>
-			{% endfor %}
-		</ul>
-		{% endif %}
-
 		{% block content %}
 		patata
 		{% endblock %}
-		
+
 		<footer class="navbar navbar-inverse navbar-fixed-bottom col-md-12 hidden-xs visible-sm visible-md visible-lg">
 			<a  class="navbar-text navbar-right logos" href="http://www.websalpunt.cat"><img class="img-responsive"  src={%static "imatges/puntcat.png" %}></a>
 			<a id="dinahosting" class="navbar-text navbar-right logos" href="http://www.dinahosting.com"><img class="img-responsive"  src={%static "imatges/dinahosting.png" %}/></a>
 			<ul class="nav navbar-nav navbar-left col-md-offset-1 col-md-3 botons">
-				<li> <a  data-toggle="modal" data-target="#quisom">Qui som?</a>  </li>
-				<li> <a  data-toggle="modal" data-target="#condicions">Avís Legal i Condicions d'ús</a>	</li>
+				<li>
+					<a  data-toggle="modal" data-target="#quisom">Qui som?</a>
+				</li>
+				<li>
+					<a  data-toggle="modal" data-target="#condicions">Avís Legal i Condicions d'ús</a>
+				</li>
 			</ul>
 		</footer>
-		
+
 		<footer class="navbar navbar-inverse navbar-fixed-bottom col-md-12 visible-xs hidden-sm hidden-md hidden-lg">
 			<a  class="navbar-text navbar-right logos" href="http://www.websalpunt.cat"><img  src={%static "imatges/puntcat.png" %}></a>
 			<a id="dinahosting" class="navbar-text navbar-right logos" href="http://www.dinahosting.com"><img  height="20px" src={%static "imatges/dinahosting.png" %}/></a>
 			<ul class="nav navbar-nav navbar-left col-md-offset-1 col-md-3 botons">
-				<a  data-toggle="modal" data-target="#quisom">Qui som? ||</a>  
+				<a  data-toggle="modal" data-target="#quisom">Qui som? ||</a>
 				<a  data-toggle="modal" data-target="#condicions">Avís Legal i Condicions d'ús</a>
 			</ul>
 		</footer>
+
+		<!--Modal missatges-->
+		<div class="modal fade" id="missatges" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							&times;
+						</button>
+						<h4 class="modal-title" id="myModalLabel">Qui som?</h4>
+					</div>
+					<div class="modal-body">
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class=" panel-title">aaa</h3>
+							</div>
+							<div class="panel-body">
+
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">
+							Tancar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<!--Modal qui som-->
 		<div class="modal fade" id="quisom" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -222,9 +296,11 @@
 					</div>
 					<div class="modal-body">
 						<div class="panel panel-info">
-							<div class="panel-heading"> <h3 class=" panel-title">aaa</h3></div>
+							<div class="panel-heading">
+								<h3 class=" panel-title">aaa</h3>
+							</div>
 							<div class="panel-body">
-								 
+
 							</div>
 						</div>
 					</div>
@@ -236,7 +312,6 @@
 				</div>
 			</div>
 		</div>
-		
 
 		<!-- Modal -->
 		<div class="modal fade" id="condicions" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -250,12 +325,14 @@
 					</div>
 					<div class="modal-body">
 						<div class="panel panel-info">
-							<div class="panel-heading"> <h3 class=" panel-title">Llicència</h3></div>
+							<div class="panel-heading">
+								<h3 class=" panel-title">Llicència</h3>
+							</div>
 							<div class="panel-body">
 								<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/deed.ca"><img alt="Llicència de Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a>
 								<br />
-								<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Bookshare</span> de <a xmlns:cc="http://creativecommons.org/ns#" href="htttp://www.bookshare.cat" property="cc:attributionName" rel="cc:attributionURL">Enemic a Derrotar Websalpunt 2013</a> està subjecta a una llicència de <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/deed.ca">Reconeixement-NoComercial 4.0 Internacional de Creative Commons</a> 
-								</div>
+								<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Bookshare</span> de <a xmlns:cc="http://creativecommons.org/ns#" href="htttp://www.bookshare.cat" property="cc:attributionName" rel="cc:attributionURL">Enemic a Derrotar Websalpunt 2013</a> està subjecta a una llicència de <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/deed.ca">Reconeixement-NoComercial 4.0 Internacional de Creative Commons</a>
+							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -268,7 +345,30 @@
 		</div>
 
 		<script src="{% static 'bootstrap/js/jquery.js' %}"></script>
+		<script src="{% static 'bootstrap/js/mensajes.js' %}"></script>
 		<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+		{% if messages %}
+		<script>
+		
+						{% load eines_extras %}
+
+			//{% get_twitter_bootstrap_alert_msg_css_name message.tags as alert_tag %}-->
+			$(document).ready(function(){
+				//$().toastmessage('showErrorToast',"error dialog...");
+				
+				{% for message in messages %}
+					$().toastmessage('showToast',{
+					text: "{{message}}",
+					sticky: true,
+					position: 'top-right',
+					type: "{{message.tags}}",
+					});
+
+				{% endfor %}
+				
+			});
+		</script>
+		{% endif %}
 
 	</body>
 </html>

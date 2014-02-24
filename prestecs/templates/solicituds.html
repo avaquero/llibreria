@@ -1,46 +1,57 @@
 {% extends "base.html" %}
 
-
 {% block  title %} Solicituds - BookShare {% endblock %}
-{% block content %} 
+{% block content %}
 <h1>Aquestes són les solicituds que hi ha</h1>
 {% if solicituds %}
 <div class="container">
 	<div class="row">
 		<div class="col-md-4"></div>
-			<div class="col-md-4">
-				<ul class="list-group">
-					{% for solicitud in solicituds %}
-						<li class="list-group-item">
-							<a href="{% url 'solicituds:edita_solicitud' solicitud.id %}">    {{ solicitud.id }} - {{ solicitud.solicitant }}</a>
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
-			<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<ul class="list-group">
+				{% for solicitud in solicituds %}
+				<li class="list-group-item">
+					<a href="{% url 'solicituds:edita_solicitud' solicitud.id %}"> {{ solicitud.id }} - {{ solicitud.solicitant }}</a>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div class="col-md-4"></div>
 	</div>
 </div>
 
 <ul class="pagination">
-		{% if solicituds.has_previous %}
-			<li><a href="?pagina={{ solicituds.previous_page_number }}">&laquo;</a></li>
-			{% else %}
-				<li class="disabled"><a>&laquo;</a></li>
-        {% endif %}
+	{% if solicituds.has_previous %}
+	<li>
+		<a href="?pagina={{ solicituds.previous_page_number }}">&laquo;</a>
+	</li>
+	{% else %}
+	<li class="disabled">
+		<a>&laquo;</a>
+	</li>
+	{% endif %}
 
-        	{% for i in solicituds.paginator.page_range %}
-        		{% ifequal i solicituds.number %}
-        			<li class="active"><a href="?pagina={{ i }}">{{ i }}</a></li>
-        		{% else %}
-        			<li><a href="?pagina={{ i }}">{{ i }}</a></li>
-        		{% endifequal %}
-        	{% endfor %}
+	{% for i in solicituds.paginator.page_range %}
+	{% ifequal i solicituds.number %}
+	<li class="active">
+		<a href="?pagina={{ i }}">{{ i }}</a>
+	</li>
+	{% else %}
+	<li>
+		<a href="?pagina={{ i }}">{{ i }}</a>
+	</li>
+	{% endifequal %}
+	{% endfor %}
 
-        {% if solicituds.has_next %}
-        	<li><a href="?pagina={{ solicituds.next_page_number }}">&raquo;</a></li>
-        	{% else %}
-				<li class="disabled"><a>&raquo;</a></li>
-        {% endif %}
+	{% if solicituds.has_next %}
+	<li>
+		<a href="?pagina={{ solicituds.next_page_number }}">&raquo;</a>
+	</li>
+	{% else %}
+	<li class="disabled">
+		<a>&raquo;</a>
+	</li>
+	{% endif %}
 </ul>
 
 {% else %}
