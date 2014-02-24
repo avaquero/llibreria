@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     url(r'^solicituds/', include('prestecs.urls',namespace='solicituds')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^usuaris/', include('usuaris.urls', namespace='usuaris')),
+    #social auth
     url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 )
