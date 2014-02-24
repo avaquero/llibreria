@@ -122,4 +122,14 @@ def novaSolicitut (request, idLlibre):
         messages.error(request,'El llibre no esta disponible')
         return HttpResponseRedirect('/llibres')
         
-    
+@login_required
+def retornarLlibre(request, idLlibre):
+    llibre = get_object_or_404(Llibre, pk = idLlibre)
+    if llibre.propietari == request.user.id:
+        llibre.estat = 'disponible'
+        messages.success(request, 'Llibre tornat correctament')
+        return HttpResponseRedirect("{% url 'home' %}")
+    else:
+        messages.error(request, 'S\'ha produit un error al retornar el llibre')
+        return HttpResponseRedirect("/llibres/fitxaLlibre/"+idLlibre)
+        
