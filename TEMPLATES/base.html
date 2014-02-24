@@ -218,7 +218,8 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="{% url 'usuaris:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+						<!--<a href="{% url 'usuaris:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a>-->
+						<a href="{% url 'social:begin' 'google-oauth2' %}"><span class="glyphicon glyphicon-log-in"></span> LoginSocial</a>
 					</li>
 
 				</ul>

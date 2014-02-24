@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -25,7 +24,6 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -59,7 +57,6 @@ ROOT_URLCONF = 'llibreria.urls'
 
 WSGI_APPLICATION = 'llibreria.wsgi.application'
 
-
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     "django.contrib.auth.context_processors.auth",
@@ -79,9 +76,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 #social auth
 AUTHENTICATION_BACKENDS = (
-    'social.backends.facebook.FacebookOAuth2',
     'social.backends.google.GoogleOAuth2',
-    'django.contrib.auth.backends.ModelBackend', 
+    #'django.contrib.auth.backends.ModelBackend', 
 )
 
 # Database
@@ -107,9 +103,26 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
+
+
+
+#SOCIAL AUTH GOOGLE Oauth2:
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '741166349936.apps.googleusercontent.com' #afegir les keys enviades privadament!
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'sU_W7koFrSZq1WUjE9kiFohZ' #afegir el secret enviat privadament!
+
+
+#URLS SOCIAL AUTH
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/login-error/'
+SOCIAL_AUTH_LOGIN_URL = '/login-url/'
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/new-users-redirect-url/'
+SOCIAL_AUTH_NEW_ASSOCIATION_REDIRECT_URL = '/new-association-redirect-url/'
+SOCIAL_AUTH_DISCONNECT_REDIRECT_URL = '/account-disconnected-redirect-url/'
+SOCIAL_AUTH_INACTIVE_USER_URL = '/inactive-user/'
+
 
 STATIC_URL = '/static/'
 #Templates

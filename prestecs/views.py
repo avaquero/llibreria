@@ -16,8 +16,10 @@ from django.contrib.auth.models import User
 
 @login_required
 def llistatPrestecs(request):
-    prestecs = Prestec.objects.all()
-    context = {'prestecs':prestecs}
+    usuari = get_object_or_404(Perfil, pk = request.user.id)
+    prestecs = Prestec.objects.filter(prestamista = usuari)
+    mhanprestat = Prestec.objects.filter(beneficiari = usuari)
+    context = {'prestecs':prestecs, 'mhanprestat':mhanprestat}
     return render(request, 'prestecs.html', context)
 
 
