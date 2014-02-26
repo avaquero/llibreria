@@ -8,5 +8,6 @@ urlpatterns = patterns('',
     url(r'^editarPrestec/(?P<idPrestec>\d+)$',views.nouPrestec, name='edita_prestec'),
     url(r'^editarSolicitud/(?P<idSolicitud>\d+)$',views.solicitudPrestec, name='edita_solicitud'),
     url(r'^novaSolicitud/$', views.solicitudPrestec, name='novaSolicitud'),
-    url(r'^solicitar/(?P<idLlibre>\d+)$',views.novaSolicitut, name='solicitar'),  
+    url(r'^solicitar/(?P<idLlibre>\d+)$',views.novaSolicitut, name='solicitar'),
+    url(r'^retornarLlibre/(?P<idLlibre>\d+)$', views.retornarLlibre, name='retornarLlibre'),
 )
