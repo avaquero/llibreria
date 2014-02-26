@@ -77,7 +77,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #social auth
 AUTHENTICATION_BACKENDS = (
     'social.backends.google.GoogleOAuth2',
-    #'django.contrib.auth.backends.ModelBackend', 
+    'django.contrib.auth.backends.ModelBackend', 
 )
 
 # Database
