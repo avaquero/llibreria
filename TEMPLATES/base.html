@@ -362,7 +362,7 @@
 				{% for message in messages %}
 					$().toastmessage('showToast',{
 					text: "{{message}}",
-					sticky: true,
+					sticky: false,
 					position: 'top-right',
 					type: "{{message.tags}}",
 					});

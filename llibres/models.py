@@ -34,4 +34,4 @@ class Llibre(models.Model):
     imatge = models.FileField(upload_to="books", blank=True)
 
     def __unicode__(self):
-        return self.titol
+        return self.titol.titol
