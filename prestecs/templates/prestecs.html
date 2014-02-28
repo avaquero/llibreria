@@ -2,29 +2,30 @@
 
 {% block  title %} Prestecs - BookShare {% endblock %}
 {% block content %}
-<h1>Aquests són els prestecs que hi ha</h1>
+<h1>Aquests són els prestecs realitzats</h1>
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-6">
+			<h2>Llibres que he prestat</h2>
 			<ul class="list-group">
 				{% for prestec in prestecs %}
 				<li class="list-group-item">
-					<a href="{% url 'prestecs:edita_prestec' prestec.id %}"> {{ prestec.id }} - {{ prestec.beneficiari }}</a>
+					<a href="{% url 'prestecs:edita_prestec' prestec.id %}"> {{ prestec.llibre }} a {{ prestec.beneficiari }}</a>
 				</li>
 				{% endfor %}
 			</ul>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-6">
+			<h2>Llibres que m'han prestat</h2>
 			<ul class="list-group">
 				{% for prestec in mhanprestat %}
 				<li class="list-group-item">
-					<a href="{% url 'prestecs:edita_prestec' prestec.id %}"> {{ prestec.id }} - {{ prestec.prestamista }}</a>
+					<a href="{% url 'prestecs:edita_prestec' prestec.id %}"> {{ prestec.llibre }} me l'ha prestat {{ prestec.prestamista }}</a>
 				</li>
 				{% endfor %}
 			</ul>
 		</div>
-		<div class="col-md-4"></div>
 	</div>
 </div>
 
