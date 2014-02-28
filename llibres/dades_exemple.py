@@ -13,7 +13,7 @@ def crea():
     oriol_usr = User.objects.create_user('oriol', 'oriol@bookshare.cat', 'oriol1')
     oriol_usr.save()
     oriol = Perfil()
-    oriol.usuari = oriol_usr;
+    oriol.usuari = oriol_usr
     oriol.save()
     
     pepe_usr.save()
