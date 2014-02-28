@@ -11,26 +11,8 @@ def crea():
     jose_usr = User.objects.create_user( 'jose', 'jose@bookshare.cat', 'jose1' )
     pepa_usr = User.objects.create_user( 'pepa', 'pepa@bookshare.cat', 'pepa1' )
     oriol_usr = User.objects.create_user('oriol', 'oriol@bookshare.cat', 'oriol1')
-    oriol_usr.save()
-    oriol = Perfil()
-    oriol.usuari = oriol_usr
-    oriol.save()
     
-    pepe_usr.save()
-    jose_usr.save()
-    pepa_usr.save()
-    
-    pepe = Perfil()
-    pepe.usuari = pepe_usr
-    pepe.save()
-    
-    jose = Perfil()
-    jose.usuari = jose_usr
-    jose.save()
-    
-    pepa = Perfil()
-    pepa.usuari = pepa_usr
-    pepa.save()
+
     #------------------------GENERES------------------------------------
     fantasia = Genere()
     fantasia.nom = "Fantasia"
@@ -78,7 +60,7 @@ def crea():
     harry2.edicio = "Cinquena"
     harry2.editorial = "Empuries"
     harry2.titol = hp2
-    harry2.propietari = oriol
+    harry2.propietari = Perfil.objects.get(usuari__username = 'oriol')
     harry2.save()
     
     harry1 = Llibre()
@@ -86,13 +68,13 @@ def crea():
     harry1.edicio = "Primera"
     harry1.editorial = "La Castellana"
     harry1.titol = harrypotter
-    harry1.propietari = pepe
+    harry1.propietari = Perfil.objects.get(usuari__username = 'pepe')
     harry1.save()
     
-    amor1 = Llibre(isbn = "0000000000002",edicio = "Segona",editorial = "La Catalana", titol = amor, propietari = pepa)
+    amor1 = Llibre(isbn = "0000000000002",edicio = "Segona",editorial = "La Catalana", titol = amor, propietari = pepa_usr.perfil)
     amor1.save()
     
-    grito1 = Llibre(isbn = "0000000000003", edicio = "Tercera", editorial = "Maya", titol = grito, propietari = jose)
+    grito1 = Llibre(isbn = "0000000000003", edicio = "Tercera", editorial = "Maya", titol = grito, propietari = jose_usr.perfil)
     grito1.save()
     
     

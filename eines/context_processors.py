@@ -7,6 +7,8 @@ def alerta_peticions(request):
                               hasattr(request.user, 'perfil')  and
                               request.user.perfil.llibre_set.filter(titol__solicitut_prestec__estat = 'pendent').exists()
                              )
+    
+    
     return {'alerta_peticions_flag':alerta_peticions_flag,
             }
     
