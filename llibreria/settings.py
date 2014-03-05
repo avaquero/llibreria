@@ -74,6 +74,21 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     
 )
 
+from social.pipeline.social_auth import social_details
+
+SOCIAL_AUTH_PIPELINE = (
+    'usuaris.hash.social_details',
+#'social.pipeline.social_auth.social_details',
+'social.pipeline.social_auth.social_uid',
+'social.pipeline.social_auth.auth_allowed',
+'social.pipeline.social_auth.social_user',
+'social.pipeline.user.get_username',
+'social.pipeline.user.create_user',
+'social.pipeline.social_auth.associate_user',
+'social.pipeline.social_auth.load_extra_data',
+'social.pipeline.user.user_details'
+)
+
 #social auth
 AUTHENTICATION_BACKENDS = (
     'social.backends.google.GoogleOAuth2',
@@ -105,7 +120,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-
 
 
 #SOCIAL AUTH GOOGLE Oauth2:
