@@ -22,15 +22,9 @@ def llistatPrestecs(request):
     context = {'prestecs':prestecs, 'mhanprestat':mhanprestat}
     return render(request, 'prestecs.html', context)
 
-
-#@login_required
-#def llistatSolicituds(request):
-    #solicituds = Solicitut_Prestec.objects.all()
-    #context = {'solicituds':solicituds}
-    #return render(request, 'solicituds.html', context)
-
 @login_required
 def llistatSolicituds(request):
+    usuari = get_object_or_404(Perfil, pk = request.user.id)
     solicitud = Solicitut_Prestec.objects.all()
     paginator = Paginator(solicitud, 2) #Quantes solicituds volem mostrar
     page = request.GET.get('pagina') #('pagina') és el que s'assignara al get
@@ -45,6 +39,29 @@ def llistatSolicituds(request):
         solicituds = paginator.page(1)
     context = {'solicituds':solicituds}
     return render(request, 'solicituds.html', context)
+
+#@login_required
+#def llistatSolicituds(request):
+    #solicituds = Solicitut_Prestec.objects.all()
+    #context = {'solicituds':solicituds}
+    #return render(request, 'solicituds.html', context)
+
+#@login_required
+#def llistatSolicituds(request):
+    #solicitud = Solicitut_Prestec.objects.all()
+    #paginator = Paginator(solicitud, 2) #Quantes solicituds volem mostrar
+    #page = request.GET.get('pagina') #('pagina') és el que s'assignara al get
+    #try:
+        #solicituds = paginator.page(page)
+    #except PageNotAnInteger:
+        # Si la pagina no es un  numero li en viem a la primera pagina
+        #solicituds = paginator.page(1)
+    #except EmptyPage:
+        # Si no posa pagina li enviem a la primera... per correus... li enviaria a la ultima
+        #contacts = paginator.page(paginator.num_pages) -- per enviar a la ultima pagina
+        #solicituds = paginator.page(1)
+    #context = {'solicituds':solicituds}
+    #return render(request, 'solicituds.html', context)
 
 
 @login_required
