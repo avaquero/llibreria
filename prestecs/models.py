@@ -21,7 +21,7 @@ class Prestec(models.Model):
 class Solicitut_Prestec(models.Model):
     dataSolicitut = models.DateTimeField(default=timezone.now)
     solicitant = models.ForeignKey(Perfil, related_name='solicitant_set')
-    titol = models.OneToOneField(Titol)
+    titol = models.ForeignKey(Titol)
     estat =  models.CharField(max_length=20, choices=ESTAT_PRESTEC_CHOICES)
     
     

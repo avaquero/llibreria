@@ -132,6 +132,7 @@ def novaSolicitut (request, idLlibre):
         solicitut.dataSolicitut = datetime.datetime.now()
         solicitut.solicitant = solicitant
         solicitut.titol = llibre.titol
+        solicitut.estat = "pendent"
         solicitut.save()
         llibre.estat = "pendent"
         llibre.save()
