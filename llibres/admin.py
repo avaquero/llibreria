@@ -1,16 +1,9 @@
 from django.contrib import admin
-from llibres.models import Genere, Titol, Llibre
+from models import Genere, Titol, Llibre
 # Register your models here.
 
-class GenereAdmin(admin.ModelAdmin):
-    fields = ('nom',)
+admin.site.register(Genere)
 
-admin.site.register(Genere, GenereAdmin)
+admin.site.register(Titol)
 
-class TitolAdmin(admin.ModelAdmin):
-    fields = ('titol','sinopsis','genere','idioma')
-admin.site.register(Titol, TitolAdmin)
-
-class LlibreAdmin(admin.ModelAdmin):
-    fields = ('isbn','edicio','editorial','titol','propietari','estat','imatge')
-admin.site.register(Llibre, LlibreAdmin)
+admin.site.register(Llibre)

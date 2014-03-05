@@ -7,7 +7,7 @@ class Perfil(models.Model):
     usuari = models.OneToOneField(User)
     
     def __unicode__(self):
-        return self.usuari
+        return self.usuari.username
     
 from django.db.models.signals import post_save
 
