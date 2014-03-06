@@ -125,9 +125,9 @@
 				</ul>
 				<!--{% if alerta_peticions_flag %}
 				<ul id="patata" class="nav navbar-nav">
-					<li >
-						<a href="#"><span class="glyphicon glyphicon-envelope"></span> {{alerta_peticions_flag}}</a>
-					</li>
+				<li >
+				<a href="#"><span class="glyphicon glyphicon-envelope"></span> {{alerta_peticions_flag}}</a>
+				</li>
 				</ul>
 				{% endif %}-->
 
@@ -162,7 +162,7 @@
 		</nav>
 		{% else %}
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-			
+
 			<a class="navbar-brand" href="{% url 'home' %}"><span class="glyphicon glyphicon-home"></span> Home</a>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -191,9 +191,9 @@
 					</li>
 				</ul>
 				<!--<ul class="nav navbar-nav">
-					<li class="">
-						<a href="#"><span class="glyphicon glyphicon-envelope"></span>{{alerta_peticions_flag}}</a>
-					</li>
+				<li class="">
+				<a href="#"><span class="glyphicon glyphicon-envelope"></span>{{alerta_peticions_flag}}</a>
+				</li>
 				</ul>-->
 				<form class="navbar-form navbar-left" action="{% url 'recerca' %}" method="post" role="search">
 
@@ -222,13 +222,6 @@
 		</nav>
 		{% endif %}
 		{% endblock %}
-		
-		
-		
-		
-
-
-
 
 		{% block content %}
 		patata
@@ -298,10 +291,14 @@
 					<div class="modal-body">
 						<div class="panel panel-info">
 							<div class="panel-heading">
-								<h3 class=" panel-title">aaa</h3>
+								<h3 class=" panel-title">Qui som?</h3>
 							</div>
 							<div class="panel-body">
+								Som un grup de 5 alumnes de l'Institut Cendrassos que cursem el cicle superior d'informatica DAW (Desenvolupament d'aplicacions web).
 
+								El projecte que hem creat tracta d'una web la qual a traves d'ella podrem accedir a una xarxa per compartir llibres. Una xarxa en la que podrem donar llibres, deixar-los, que ens els deixin o rebrels.
+
+								El web té un chat per el qual ens podrem comunciar amb altres usuaris del web, també tindrà una llista dels llibres que la gent està disposada a donar i/o deixar.
 							</div>
 						</div>
 					</div>
@@ -324,7 +321,77 @@
 						</button>
 						<h4 class="modal-title" id="myModalLabel">Avís Legal i Condicions d'ús </h4>
 					</div>
+					
+					
+					
+					
 					<div class="modal-body">
+						
+						
+						<div class="panel panel-warning">
+							<div class="panel-heading">
+								<h3 class=" panel-title">Exclusió de garanties</h3>
+							</div>
+							<div class="panel-body">
+								El portal web forma part d'una pràctica avaluable escolar obligatòria. Per aquest motiu no s'hauria d'utilitzar d'una forma més enllà que l'acadèmica i <b>els creadors del portal no garanteixen la funcionalitat total del portal.</b> 
+							</div>
+						</div>
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class=" panel-title">Condicions</h3>
+							</div>
+							<div class="panel-body">
+								Les següents condicions regulen l'accés i l'utilització del web que BookShare proporciona als seus usuaris, pel conseqüent comporta l'acceptació de les mateixes.
+							</div>
+						</div>
+
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class=" panel-title">Accés</h3>
+							</div>
+							<div class="panel-body">
+								Demanem siusplau als usuaris que llegeixin les següents condicions d'ús, ja que aquestes poden ser adaptades i/o modificades quan es vulgui, la modificació de les mateixes serà avisat amb prou antel·lació. En el cas que no s'estigui d'acord amb les mateixes es prega la no utilització del web.
+							</div>
+						</div>
+
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class=" panel-title">Utilització</h3>
+							</div>
+							<div class="panel-body">
+								Al fer servir el web els usuaris es comprometen a fer-ne un ús raonable i correcte en relació als serveis que ofereix la mateixa. L'usuari es compromet a respectar el web en base a qualsevol acte malintencionat tal com pot ser virus, colapsar el web, inutilitzar i/o sobrecarregar-lo.
+
+								Es deixa constancia que en qualsevol cas de desobeir les condicions d'ús, BookShare es reserva el dret d'actuar en conseqüencia per asegurarse de mantenir el web operatiu.
+							</div>
+						</div>
+
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class=" panel-title">Funcionament</h3>
+							</div>
+							<div class="panel-body">
+								L'equip del web procurarà a mantenir el web operatiu i amb un bon manteniment en el que respecta a funcionament i dades d'ús. Tot i l'esmentat anteriorment, BookShare no es compromet a mantenir el web operatiu ni l'existencia d'errors en el seu web.
+							</div>
+						</div>
+
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class=" panel-title">Modificacions</h3>
+							</div>
+							<div class="panel-body">
+								BookShare determinara quan s'ha de portar qualsevol acció sense previ avis tal com poden ser creació, modificació i/o eliminació  sobre l'informació que el web conté, presentacions o configuracions.
+							</div>
+						</div>
+
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class=" panel-title">Ús de la informació </h3>
+							</div>
+							<div class="panel-body">
+								BookShare no demana dades de caràcter personal, els registres es basen en autentificació social mitjançant el compte de gmail i les dades que es recopilen no es poden asociar a persones fisiques.
+							</div>
+						</div>
+
 						<div class="panel panel-info">
 							<div class="panel-heading">
 								<h3 class=" panel-title">Llicència</h3>
@@ -369,10 +436,9 @@
 			});
 		</script>
 		{% endif %}
-		
+
 		{% if alerta_peticions_flag %}
 		<script>
-
 			$(document).ready(function() {
 
 				$().toastmessage('showToast', {
@@ -381,7 +447,6 @@
 					position : 'top-right',
 					type : "notice",
 				});
-
 
 			});
 		</script>

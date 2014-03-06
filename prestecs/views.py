@@ -144,7 +144,7 @@ def novaSolicitut (request, idTitol):
             llibre.save()
             comptador =  True
             messages.success(request, 'Solicitut enviada correctament')
-            messages.success(request, 'Solicitut registrada a nom de '+solicitant.username+ " amb el llibre  "+ solicitut.titol.titol )
+            messages.success(request, 'Solicitut registrada a nom de '+solicitant.usuari.username+ " amb el llibre  "+ solicitut.titol.titol )
             return HttpResponseRedirect('/')
     
     messages.error(request,'El titol no té cap llibre disponible')
