@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 from django.shortcuts import render
 from llibres.models import  Titol, Llibre
 from django.contrib.redirects.models import Redirect
@@ -5,6 +6,7 @@ from httplib import HTTP
 from eines.forms import BuscaForm
 from django.core.urlresolvers import reverse
 from django.http.response import HttpResponseRedirect
+from django.contrib import messages
 # Create your views here.
 
 def home(request):
@@ -21,8 +23,12 @@ def recerca(request):
         form = BuscaForm(request.POST)
         if form.is_valid():
             buscat = form.cleaned_data['busca']
+            print "buscat es igual "+buscat
             url_next = reverse('recerca')
             return HttpResponseRedirect( url_next + "?q=" + buscat)
+        else:
+            messages.error(request, "Ep! Busqueda no vàlida")
+            return HttpResponseRedirect('/')
         
     else:    
         form = BuscaForm()   
