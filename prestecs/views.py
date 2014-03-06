@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 from django.shortcuts import render, get_object_or_404
 from prestecs.models import Prestec, Solicitut_Prestec
-from llibres.models import Llibre
+from llibres.models import Llibre, Titol
 from usuaris.models import Perfil
 from prestecs.forms import FormPrestec, FormSolicitutPrestec
 from django.shortcuts import render, get_object_or_404
@@ -106,24 +106,32 @@ def solicitudPrestec(request, idSolicitud =  None):
     return render(request, 'solicitudPrestec.html', {'form':form,})
 
 @login_required
-def novaSolicitut (request, idLlibre):
-    llibre = Llibre.objects.get( id = idLlibre )
+def novaSolicitut (request, idTitol):
+    titolet = Titol.objects.get( id = idTitol )
     solicitant = get_object_or_404(Perfil, pk = request.user.id)
     solicitut = Solicitut_Prestec();
+    llibres = Llibre.objects.filter(titol__id = titolet.id)
+    print llibres
+    comptador = False
+    for llibre in llibres:
+        print llibre.estat
+        if llibre.estat == "disponible" and comptador == False:
+            print "Llibre disponible"
+            solicitut.dataSolicitut = datetime.datetime.now()
+            
+            solicitut.solicitant = solicitant
+            solicitut.titol = llibre.titol
+            solicitut.estat = "pendent"
+            solicitut.save()
+            llibre.estat = "pendent"
+            llibre.save()
+            comptador =  True
+            messages.success(request, 'Solicitut enviada correctament')
+            messages.success(request, 'Solicitut registrada a nom de '+solicitant.username+ " amb el llibre  "+ solicitut.titol.titol )
+            return HttpResponseRedirect('/')
     
-    if llibre.estat == "disponible":
-        solicitut.dataSolicitut = datetime.datetime.now()
-        solicitut.solicitant = solicitant
-        solicitut.titol = llibre.titol
-        solicitut.estat = "pendent"
-        solicitut.save()
-        llibre.estat = "pendent"
-        llibre.save()
-        messages.success(request, 'Solicitut enviada correctament')
-        return HttpResponseRedirect('/')
-    else:
-        messages.error(request,'El llibre no esta disponible')
-        return HttpResponseRedirect('/llibres')
+    messages.error(request,'El titol no té cap llibre disponible')
+    return HttpResponseRedirect('/llibres')
         
 @login_required
 def retornarLlibre(request, idLlibre):
