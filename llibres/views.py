@@ -108,6 +108,9 @@ def entradaTitols(request, idTitol = None):
     else:
         form = FormTitol(instance=titol)
         
+    camps_bootstrap = ('titol','sinopsis','genere', 'idioma')
+    for c in camps_bootstrap:
+        form.fields[c].widget.attrs['class'] = 'form-control'
     return render(request, 'entradaTitol.html', {'form':form,})
 
 def llistatTitols(request):
