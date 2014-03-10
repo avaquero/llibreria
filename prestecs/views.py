@@ -26,7 +26,7 @@ def llistatPrestecs(request):
 def llistatSolicituds(request):
     usuari = get_object_or_404(Perfil, pk = request.user.id)
     solicitud = Solicitut_Prestec.objects.all()
-    paginator = Paginator(solicitud, 2) #Quantes solicituds volem mostrar
+    paginator = Paginator(solicitud, 20) #Quantes solicituds volem mostrar
     page = request.GET.get('pagina') #('pagina') és el que s'assignara al get
     try:
         solicituds = paginator.page(page)
