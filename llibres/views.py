@@ -57,28 +57,28 @@ def llistatGeneres(request):
     context = {'generes':generes}
     return render(request, 'generes.html', context)
 
-@login_required
-def entradaGeneres(request, idGenere = None):
+#@login_required
+#def entradaGeneres(request, idGenere = None):
     #Si idGenere es None creem un nou genere, sinó editem
-    if idGenere is not None:
-        genere = get_object_or_404(Genere, pk=idGenere)
-    else:
-        genere = Genere()
+   # if idGenere is not None:
+    #    genere = get_object_or_404(Genere, pk=idGenere)
+   # else:
+    #    genere = Genere()
     #Si el metode es POST tractem les dades
-    if request.method == 'POST':
-        form = FormGenere(request.POST, instance = genere)
+   # if request.method == 'POST':
+      #  form = FormGenere(request.POST, instance = genere)
         #Si les dades son correctes, les processem i redirigim a la llista de generes
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Genere introduit correctament')
-            return HttpResponseRedirect('/llibres/llistatGeneres')
-        else:
-            messages.error(request, 'Ep! Hi ha hagut un error al introduir un genere')
+       # if form.is_valid():
+      #      form.save()
+        #    messages.success(request, 'Genere introduit correctament')
+          #  return HttpResponseRedirect('/llibres/llistatGeneres')
+       # else:
+        #    messages.error(request, 'Ep! Hi ha hagut un error al introduir un genere')
     #Si no es POST serà GET, mostrem el formulari buit
-    else:
-        form = FormGenere(instance=genere)
+ #   else:
+   #     form = FormGenere(instance=genere)
         
-    return render(request, 'entradaGenere.html', {'form':form,})
+ #   return render(request, 'entradaGenere.html', {'form':form,})
 
 def llistatTitolsDeGenere(request, idGenere):
     #TODO No acabat!

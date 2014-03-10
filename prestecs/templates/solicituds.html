@@ -11,7 +11,7 @@
 			<ul class="list-group">
 				{% for solicitud in solicituds %}
 				<li class="list-group-item">
-					<a href="{% url 'solicituds:edita_solicitud' solicitud.id %}"> {{ solicitud.id }} - {{ solicitud.solicitant }}</a>
+					 {{ solicitud.id }} - {{ solicitud.solicitant }}
 				</li>
 				{% endfor %}
 			</ul>
