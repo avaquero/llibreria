@@ -1,14 +1,12 @@
 # -*- encoding: utf-8 -*-
 from django.shortcuts import render, get_object_or_404
-
+from usuaris.models import Perfil
 from django.http import HttpResponse
 from llibres.models import Titol, Genere, Llibre
 from django.http.response import HttpResponseRedirect
 from llibres.forms import FormGenere, FormLlibre, FormTitol
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
-
 
 
 def index(request):
@@ -34,6 +32,8 @@ def entradaLlibre(request, idLlibre =  None):
     else:
         llibre = Llibre()
     #Si el metode es POST tractem les dades
+    llibre.propietari = request.user.perfil
+    llibre.estat = 'disponible'
     if request.method == 'POST':
         form = FormLlibre(request.POST, request.FILES, instance = llibre)
     #Si les dades son correctres, les procressem i redirigim a la llista de llibres
@@ -46,8 +46,8 @@ def entradaLlibre(request, idLlibre =  None):
     #Si no es POST serà GET, mostrem el formulari buit
     else:
         form = FormLlibre(instance = llibre)
-        
-    camps_bootstrap = ('isbn', 'edicio', 'editorial', 'titol', 'propietari', 'estat', 'imatge')
+           
+    camps_bootstrap = ('isbn', 'edicio', 'editorial', 'titol')
     for c in camps_bootstrap:
         form.fields[c].widget.attrs['class'] = 'form-control'
     return render(request, 'entradaLlibre.html', {'form':form,})
