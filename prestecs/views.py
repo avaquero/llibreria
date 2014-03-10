@@ -128,12 +128,12 @@ def novaSolicitut (request, idTitol):
     solicitant = get_object_or_404(Perfil, pk = request.user.id)
     solicitut = Solicitut_Prestec();
     llibres = Llibre.objects.filter(titol__id = titolet.id)
-    print llibres
+    #print llibres
     comptador = False
     for llibre in llibres:
-        print llibre.estat
+        #print llibre.estat
         if llibre.estat == "disponible" and comptador == False:
-            print "Llibre disponible"
+            #print "Llibre disponible"
             solicitut.dataSolicitut = datetime.datetime.now()
             
             solicitut.solicitant = solicitant
