@@ -23,7 +23,7 @@ def recerca(request):
         form = BuscaForm(request.POST)
         if form.is_valid():
             buscat = form.cleaned_data['busca']
-            print "buscat es igual "+buscat
+            
             url_next = reverse('recerca')
             return HttpResponseRedirect( url_next + "?q=" + buscat)
         else:

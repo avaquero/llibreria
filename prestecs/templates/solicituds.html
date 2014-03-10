@@ -2,7 +2,7 @@
 
 {% block  title %} Solicituds - BookShare {% endblock %}
 {% block content %}
-<h1>Aquestes són les solicituds que hi ha</h1>
+<h1>Aquestes són les teves solicituds</h1>
 {% if solicituds %}
 <div class="container">
 	<div class="row">
@@ -11,7 +11,7 @@
 			<ul class="list-group">
 				{% for solicitud in solicituds %}
 				<li class="list-group-item">
-					 {{ solicitud.id }} - {{ solicitud.solicitant }}
+					{{ solicitud.id }} -  {{solicitud.titol}}
 				</li>
 				{% endfor %}
 			</ul>

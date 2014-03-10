@@ -3,7 +3,7 @@ from prestecs import views
 
 urlpatterns = patterns('',
     url(r'^$', views.llistatPrestecs, name='llistatPrestecs'),
-    url(r'^llistatSolicituds$', views.llistatSolicituds, name='llistatSolicituds'),
+    url(r'^llistatSolicituds$', views.llistatMevesSolicituts, name='llistatSolicituds'),
     #url(r'^nouPrestec/$', views.nouPrestec, name='nouPrestec'),
     #url(r'^editarPrestec/(?P<idPrestec>\d+)$',views.nouPrestec, name='edita_prestec'),
     #url(r'^editarSolicitud/(?P<idSolicitud>\d+)$',views.solicitudPrestec, name='edita_solicitud'),
