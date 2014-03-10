@@ -63,77 +63,18 @@ def llistatSolicituds(request):
     #context = {'solicituds':solicituds}
     #return render(request, 'solicituds.html', context)
 
-
-@login_required
-def nouPrestec(request, idPrestec =  None):
-    #Si idLlibre es None creem un nou llibre, sinó l'editem
-    if idPrestec is not None:
-        prestec = get_object_or_404(Prestec, pk = idPrestec)
-    else:
-        prestec = Prestec()
-    #Si el metode es POST tractem les dades
-    if request.method == 'POST':
-        form = FormPrestec(request.POST, instance = prestec)
-    #Si les dades son correctres, les procressem i redirigim a la llista de prestecs
-        if form.is_valid():
-            prestamista = form.cleaned_data['prestamista']
-            beneficiari = form.cleaned_data['beneficiari']
-            llibre = form.cleaned_data['llibre']
-                 
-            if prestamista != beneficiari:
-                if llibre.estat == "disponible":
-                    form.save()
-                    messages.success(request, 'Prestec introduit correctament')
-                    return HttpResponseRedirect('/prestecs')
-                else:
-                   messages.error(request,'El llibre no esta disponible') 
-            else:
-                messages.error(request,'El beneficiari i el prestamista no poden ser el mateix')
-        else:
-            messages.error(request, "Ep! Hi ha hagut un error al introduir un prestec")
-    #Si no es POST serà GET, mostrem el formulari buit
-    else:
-        form = FormPrestec(instance = prestec)
-        
-    camps_bootstrap = ('dataPrestec','beneficiari', 'prestamista', 'llibre')
-    for c in camps_bootstrap:
-        form.fields[c].widget.attrs['class'] = 'form-control'
-    return render(request, 'entrarPrestec.html', {'form':form,})
-
-@login_required
-def solicitudPrestec(request, idSolicitud =  None):
-    #Si idLlibre es None creem un nou llibre, sinó l'editem
-    if idSolicitud is not None:
-        solicitud = get_object_or_404(Solicitut_Prestec, pk = idSolicitud)
-    else:
-        solicitud = Solicitut_Prestec()
-    #Si el metode es POST tractem les dades
-    if request.method == 'POST':
-        form = FormSolicitutPrestec(request.POST, instance = solicitud)
-    #Si les dades son correctres, les procressem i redirigim a la llista de prestecs
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Solicitud introduïda correctament')
-            return HttpResponseRedirect('/solicituds')
-        else:
-            messages.error(request, "Ep! Hi ha hagut un error al introduir una solicitud")
-    #Si no es POST serà GET, mostrem el formulari buit
-    else:
-        form = FormSolicitutPrestec(instance = solicitud)
-    return render(request, 'solicitudPrestec.html', {'form':form,})
-
 @login_required
 def novaSolicitut (request, idTitol):
     titolet = Titol.objects.get( id = idTitol )
     solicitant = get_object_or_404(Perfil, pk = request.user.id)
     solicitut = Solicitut_Prestec();
     llibres = Llibre.objects.filter(titol__id = titolet.id)
-    print llibres
+    #print llibres
     comptador = False
     for llibre in llibres:
-        print llibre.estat
+        #print llibre.estat
         if llibre.estat == "disponible" and comptador == False:
-            print "Llibre disponible"
+            #print "Llibre disponible"
             solicitut.dataSolicitut = datetime.datetime.now()
             
             solicitut.solicitant = solicitant
