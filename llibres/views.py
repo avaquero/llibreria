@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from usuaris.models import Perfil
 from django.http import HttpResponse
 from llibres.models import Titol, Genere, Llibre
-from django.http.response import HttpResponseRedirect
+from django.http.response import HttpResponseRedirect, Http404
 from llibres.forms import FormGenere, FormLlibre, FormTitol
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -29,6 +29,8 @@ def entradaLlibre(request, idLlibre =  None):
     #Si idLlibre es None creem un nou llibre, sinó l'editem
     if idLlibre is not None:
         llibre = get_object_or_404(Llibre, pk = idLlibre)
+        if llibre.propietari != request.user.perfil:
+            raise Http404
     else:
         llibre = Llibre()
     #Si el metode es POST tractem les dades

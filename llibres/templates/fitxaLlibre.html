@@ -33,9 +33,10 @@
 				{% endif %}
 			</div>
 			<div class="row" id="button1">
-				<a href="{% url 'llibres:editarLlibre' llibre.id %}" class="btn btn-default">Editar</a>
 				
 				{% if llibre.propietari.usuari.username == user.username %}
+				<a href="{% url 'llibres:editarLlibre' llibre.id %}" class="btn btn-default">Editar</a>
+
 				<a href="{% url 'prestecs:retornarLlibre' llibre.id %}" class="btn btn-default">Retornat</a>
 				{% endif %}
 			</div>
