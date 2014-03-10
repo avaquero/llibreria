@@ -9,5 +9,4 @@ def social_details(strategy, response, *args, **kwargs):
                 'fullname': fakemail[:5],
                 'first_name': details['first_name'],
                 'last_name': '' }
-    print new_details
     return {'details': new_details }
