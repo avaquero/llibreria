@@ -7,10 +7,10 @@
 {% if generes %}
 <ul>
 		<div class="container">
-			<div class="row col-md-12">
+			<div class="list-group col-md-8 col-sm-offset-2 ">
 				{% for genere in generes %}
-					<div class="col-md-4 col-sm-offset-1 jumbotron" style="font-size:15px">
-						<a href="{% url 'llibres:editarGenere' genere.id %}">{{ genere.nom }}</a>
+					<div class="list-group-item">
+						{{ genere.nom }}
 					</div>
 				{% endfor %}
 			</div>
