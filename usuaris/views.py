@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 from django.shortcuts import render
 from usuaris.models import Perfil
-from usuaris.forms import formulariLogin
+from usuaris.forms import formulariLogin, formulariUsuari
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.http.response import HttpResponseRedirect
@@ -12,6 +12,15 @@ def llistatUsuaris(request):
     usuaris = Perfil.objects.all()
     context = {'usuaris':usuaris}
     return render(request, 'llistatUsuaris.html', context)
+
+@login_required
+def infoUsuari(request):
+    if request.method == 'POST': 
+        form = formulariUsuari(request.POST);
+    else:
+        form = formulariUsuari(); 
+        
+    return render(request,'fitxaUsuari.html', { 'form': form, });
 
 def entrada(request):
     #Si el metode es POST m'ho en enviat a mi mateix vol dir que ja tinc dades per processar
