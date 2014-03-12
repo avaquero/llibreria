@@ -7,11 +7,11 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-4"></div>
-		<div class="col-md-4">
+		<div class="col-md-5">
 			<ul class="list-group">
 				{% for solicitud in solicituds %}
 				<li class="list-group-item">
-					{{ solicitud.id }} -  {{solicitud.titol}}
+					{{ solicitud.id }} - El dia {{solicitud.dataSolicitut}} vas demanr el llibre {{solicitud.titol}}
 				</li>
 				{% endfor %}
 			</ul>

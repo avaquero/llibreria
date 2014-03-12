@@ -27,6 +27,7 @@ def llistatPrestecs(request):
 def llistatMevesSolicituts(request):
     #Usuari actual
     usuari = get_object_or_404(Perfil, pk = request.user.id)
+    #Prestecs dels que sóc el solicitants
     solicitud = Solicitut_Prestec.objects.filter(solicitant=usuari)
     paginator = Paginator(solicitud, 20) #Quantes solicituds volem mostrar
     page = request.GET.get('pagina') #('pagina') és el que s'assignara al get
@@ -39,6 +40,20 @@ def llistatMevesSolicituts(request):
         # Si no posa pagina li enviem a la primera... per correus... li enviaria a la ultima
         #contacts = paginator.page(paginator.num_pages) -- per enviar a la ultima pagina
         solicituds = paginator.page(1)
+    #---------------------
+    #Solicituds pendents d'acceptar
+    llibresUsuari = Llibre()
+    teLlibres = False
+    try:
+        titolsUsuari = Titol.objects.filter(llibre__propietari = usuari)
+        teLlibres = True
+    except Llibre.DoesNotExist:
+        llibresUsuari = Llibre()
+        teLlibres = False
+    if(teLlibres):
+        solicitud2 = Solicitut_Prestec.objects.filter(titol__in = titolsUsuari)
+    else:
+        solicitud = Solicitut_Prestec()
     context = {'solicituds':solicituds}
     return render(request, 'solicituds.html', context)
 
@@ -71,7 +86,6 @@ def novaSolicitut (request, idTitol):
     solicitant = get_object_or_404(Perfil, pk = request.user.id)
     solicitut = Solicitut_Prestec();
     llibres = Llibre.objects.filter(titol__id = titolet.id)
-    #print llibres
     comptador = False
     for llibre in llibres:
         #print llibre.estat

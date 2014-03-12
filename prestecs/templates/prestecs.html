@@ -11,7 +11,7 @@
 			<ul class="list-group">
 				{% for prestec in prestecs %}
 				<li class="list-group-item">
-					<a href="{% url 'prestecs:edita_prestec' prestec.id %}"> {{ prestec.llibre }} a {{ prestec.beneficiari }}</a>
+					{{ prestec.llibre }} a {{ prestec.beneficiari }}
 				</li>
 				{% endfor %}
 			</ul>
@@ -21,7 +21,7 @@
 			<ul class="list-group">
 				{% for prestec in mhanprestat %}
 				<li class="list-group-item">
-					<a href="{% url 'prestecs:edita_prestec' prestec.id %}"> {{ prestec.llibre }} me l'ha prestat {{ prestec.prestamista }}</a>
+					{{ prestec.llibre }} me l'ha prestat {{ prestec.prestamista }}
 				</li>
 				{% endfor %}
 			</ul>

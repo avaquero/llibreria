@@ -61,6 +61,7 @@ def crea():
     harry2.editorial = "Empuries"
     harry2.titol = hp2
     harry2.propietari = Perfil.objects.get(usuari__username = 'oriol')
+    harry2.estat = "disponible"
     harry2.save()
     
     harry1 = Llibre()
@@ -69,12 +70,13 @@ def crea():
     harry1.editorial = "La Castellana"
     harry1.titol = harrypotter
     harry1.propietari = Perfil.objects.get(usuari__username = 'pepe')
+    harry1.estat = "disponible"
     harry1.save()
     
-    amor1 = Llibre(isbn = "0000000000002",edicio = "Segona",editorial = "La Catalana", titol = amor, propietari = pepa_usr.perfil)
+    amor1 = Llibre(isbn = "0000000000002",edicio = "Segona",editorial = "La Catalana", titol = amor, propietari = pepa_usr.perfil, estat = "disponible")
     amor1.save()
     
-    grito1 = Llibre(isbn = "0000000000003", edicio = "Tercera", editorial = "Maya", titol = grito, propietari = jose_usr.perfil)
+    grito1 = Llibre(isbn = "0000000000003", edicio = "Tercera", editorial = "Maya", titol = grito, propietari = jose_usr.perfil,estat = "disponible" )
     grito1.save()
     
     

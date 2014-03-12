@@ -11,6 +11,11 @@
 		<meta http-equiv="Expires" content="0">
 		<style>
 			{% block estil %}
+			#iconaGoogle {
+				width: 25px;
+				height: 25px;
+				margin-left: 5px;
+			}
 			#iconaPrestec {
 				width: 15px;
 				height: 15px;
@@ -69,10 +74,16 @@
 
 	<body>
 
-{% block barra %}
+		{% block barra %}
 		<!--Barra d'usuaris autenticats!-->
 		{% if user.is_authenticated %}
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
 
 			<a class="navbar-brand" href="{% url 'home' %}"><span class="glyphicon glyphicon-home"></span> Home</a>
 
@@ -89,7 +100,7 @@
 								<a href="{% url 'llibres:index' %}">Llistat de llibres</a>
 							</li>
 							<li class="divider"></li>
-							
+
 							<li>
 								<a href="{% url 'llibres:llistatGeneres' %}">Llistat de generes</a>
 							</li>
@@ -109,16 +120,12 @@
 							<li>
 								<a href="{% url 'prestecs:llistatPrestecs' %}">Llistat de Prestecs</a>
 							</li>
-							<li>
-								<a href="#">Nou prestec</a>
-							</li>
+
 							<li class="divider"></li>
 							<li>
 								<a href="{% url 'solicituds:llistatSolicituds' %}">Llistat de Solicituds</a>
 							</li>
-							<li>
-								<a href="#">Nova Solicitud</a>
-							</li>
+
 						</ul>
 					</li>
 				</ul>
@@ -161,6 +168,13 @@
 		</nav>
 		{% else %}
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
 
 			<a class="navbar-brand" href="{% url 'home' %}"><span class="glyphicon glyphicon-home"></span> Home</a>
 
@@ -208,11 +222,7 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="{% url 'usuaris:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-
-					</li>
-					<li>
-						<a href="{% url 'social:begin' 'google-oauth2' %}"><span class="glyphicon glyphicon-log-in"></span> LoginSocial</a>
+						<a href="{% url 'social:begin' 'google-oauth2' %}"><span><img id="iconaGoogle" src="{% static "imatges/google.png" %}"></span> Login amb Google</a>
 					</li>
 
 				</ul>
@@ -320,19 +330,17 @@
 						</button>
 						<h4 class="modal-title" id="myModalLabel">Avís Legal i Condicions d'ús </h4>
 					</div>
-					
-					
-					
-					
+
 					<div class="modal-body">
-						
-						
+
 						<div class="panel panel-warning">
 							<div class="panel-heading">
 								<h3 class=" panel-title">Exclusió de garanties</h3>
 							</div>
 							<div class="panel-body">
-								El portal web forma part d'una pràctica avaluable escolar obligatòria. Per aquest motiu no s'hauria d'utilitzar d'una forma més enllà que l'acadèmica i <b>els creadors del portal no garanteixen la funcionalitat total del portal.</b> 
+								El portal web forma part d'una pràctica avaluable escolar obligatòria. Per aquest motiu no s'hauria d'utilitzar d'una forma més enllà que l'acadèmica i <b>els creadors del portal no garanteixen la funcionalitat total del portal.</b>
+								<br>
+								No ens fem responsables de les imatges pujades pels usuaris. Els usuaris només han de pujar imatges de les qual tinguit el permís o en siguin propietaris.
 							</div>
 						</div>
 						<div class="panel panel-info">
@@ -451,14 +459,14 @@
 		</script>
 		{% endif %}
 		<script>
-$(document).ready(function(){
-$().toastmessage('showToast',{
-text: "La web està en beta. S'aconsella no utilitzar-la en mode de productivitat",
-sticky: true,
-position: 'top-right',
-type: "warning",
-});
-});
-</script>
+			$(document).ready(function() {
+				$().toastmessage('showToast', {
+					text : "La web està en beta. S'aconsella no utilitzar-la en mode de productivitat",
+					sticky : true,
+					position : 'top-right',
+					type : "warning",
+				});
+			});
+		</script>
 	</body>
 </html>

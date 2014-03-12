@@ -1,3 +1,4 @@
+from django.contrib import messages
 def social_details(strategy, response, *args, **kwargs):
     import md5
     details = strategy.backend.get_user_details(response)
@@ -9,5 +10,4 @@ def social_details(strategy, response, *args, **kwargs):
                 'fullname': fakemail[:5],
                 'first_name': details['first_name'],
                 'last_name': '' }
-
     return {'details': new_details }
