@@ -5,34 +5,29 @@
 {% block title %} Fitxa del llibre {{ llibre.titol }} - BookShare {% endblock %}
 
 {% block content %} 
-{% if llibre %}
-	<div class="container" >
-		<div class="row">
+{% if titol %}
+	<div class="container col-md-offset-3" >
+		<div class="row ">
 			<div class="col-md-6">
-				<h1 class="text-center"> {{ llibre.titol }} </h1>
+				<h1 class="text-center"> {{ titol.titol }} </h1>
 			</div>
 		</div>
 		<div class="row col-md-12">
 			<div class="col-md-6">
 				<div class="jumbotron" style="font-size:15px">
-				<h2>{{ llibre.titol }}</h2>
-				<h2> Sinopsi </h2>
-				{{ llibre.titol.sinopsis }}
-				<p> Idioma: {{ llibre.titol.idioma }}</p>
+				<h2>{{ titol.titol }}</h2>
+				<b> Sinopsi </b>
+				{{ titol.sinopsis }}
+				<p> <b>Idioma:</b> {{ titol.idioma }}</p>
 				</div>
 			</div>
-			<div class="col-md-6">
-				{% if llibre.titol.imatge %}
-					<img height="360px" width="300px" class="img-responsive" src="{{ MEDIA_URL }}{{ llibre.titol.imatge }}">
-				{% else %}
-					<img height="360px" width="300px" class="img-responsive" src={%static "imatges/no.png" %}>
-				{% endif %}
-			</div>
-			<div class="row" id="button1">
-				<a href="{% url 'llibres:editarTitol' llibre.id %}" class="btn btn-default">Editar</a>
-				<a href="{% url 'prestecs:solicitar' llibre.id %}" class="btn btn-default">Solicitar</a>
-			</div>
+			
+			
 		</div>
+		<div class="row col-md-5" id="button1">
+				<a href="{% url 'llibres:editarTitol' titol.id %}" class="btn btn-default">Editar</a>
+				<a href="{% url 'prestecs:solicitar' titol.id %}" class="btn btn-default">Solicitar</a>
+			</div>
 	</div>
 
 {% else %}

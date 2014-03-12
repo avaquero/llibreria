@@ -20,8 +20,8 @@ def fitxaLlibre(request, idLlibre):
     return render(request, 'fitxaLlibre.html', context)
 
 def fitxaTitol(request, idTitol):
-    llibre = get_object_or_404(Llibre, pk=idTitol)
-    context = {'llibre': llibre}
+    titol = get_object_or_404(Titol, pk=idTitol)
+    context = {'titol': titol}
     return render(request, 'fitxaTitol.html', context)
 
 @login_required
